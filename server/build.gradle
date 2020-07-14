@@ -17,15 +17,30 @@ ext {
 }
 
 dependencies {
+    // 잘 모르겠음
+    compile("org.springframework.boot:spring-boot-starter-web:2.0.1.RELEASE")
+    compile("commons-collections:commons-collections:3.2")
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok:1.18.6'
+    annotationProcessor 'org.projectlombok:lombok:1.18.6'
+
+    // database
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    runtimeOnly 'mysql:mysql-connector-java'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3'
+    compile("org.mybatis:mybatis-spring:1.3.1")
+    compile("org.mybatis:mybatis:3.4.5")
+
+    // GCP
     implementation 'org.springframework.cloud:spring-cloud-gcp-starter'
     implementation 'org.springframework.cloud:spring-cloud-gcp-starter-pubsub'
     implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
-    runtimeOnly 'mysql:mysql-connector-java'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    testCompile("junit:junit:4.+")
 }
 
 dependencyManagement {
