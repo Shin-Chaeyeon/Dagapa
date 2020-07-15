@@ -1,5 +1,7 @@
 package com.kbds.service;
 
-public interface UserService {
+import com.kbds.vo.User;
 
+public interface UserService {
+    public User findUser(User user);
 }
