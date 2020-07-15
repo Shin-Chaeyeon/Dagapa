@@ -14,9 +14,6 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public User findUser(User user) {
-        User res = sqlSession.selectOne(ns + "findUser", user);
-        System.out.println(res.toString());
-        return res;
-        //return sqlSession.selectList(ns + "findUser", user);
+        return sqlSession.selectOne(ns + "findUser", user);
     }
 }
