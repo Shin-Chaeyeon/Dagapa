@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private final UserService userService;
 
-    @ApiOperation(value = "로그인", notes = "로그인을 할 경우[...]")
+    @ApiOperation(value = "로그인", notes = "")
     @PostMapping("/sign_in")
     public User login(@RequestBody User user){
         User search = userService.findUser(user);

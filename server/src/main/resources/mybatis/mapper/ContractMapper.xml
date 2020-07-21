@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ContractMapper">
+    <select id="findMyContracts" parameterType="int" resultType="Contract">
+        SELECT contractno, lender, borrower, `type`, goods, duedate, picture, record, description, agreed
+        FROM contract
+        WHERE lender = #{userno} OR borrower = #{userno}
+    </select>
+
+    <select id="findContractByNo" parameterType="int" resultType="Contract">
+        SELECT contractno, lender, borrower, `type`, goods, duedate, picture, record, description, agreed
+        FROM contract
+        WHERE contractno = #{contractno}
+    </select>
+</mapper>

@@ -1,6 +1,7 @@
 package com.kbds.controller;
 
-import com.kbds.service.UserService;
+import com.kbds.service.ContractService;
+import com.kbds.vo.Contract;
 import com.kbds.vo.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -8,22 +9,24 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Api(tags = {"***Contract***"})
 @RequiredArgsConstructor
 @RestController
 @Slf4j
 public class ContractController {
-    private final UserService userService;
+    private final ContractService contractService;
 
-    @ApiOperation(value = "계약서 조회", notes = "설명 붙이기 ~ [...]")
-    @GetMapping("/contracts/{userno}")
-    public User findByContractUserNo(@PathVariable int userno){
-//        User search = userService.findUser(user);
-//        if(user.getPw().equals(search.getPw())) {
-//            log.info("[CONTROLLER] :: login()");
-//            return search;
-//        }
-//        else return null;
-        return null;
+    @ApiOperation(value = "나의 모든 계약서 보기", notes = "")
+    @GetMapping("/my_contracts/{userno}")
+    public List<Contract> findMyContracts(@PathVariable int userno){
+        return contractService.findMyContracts(userno);
+    }
+
+    @ApiOperation(value = "계약서 상세보기", notes = "")
+    @GetMapping("/contract/{contractno}")
+    public Contract findContractByNo(@PathVariable int contractno){
+        return contractService.findContractByNo(contractno);
     }
 }
