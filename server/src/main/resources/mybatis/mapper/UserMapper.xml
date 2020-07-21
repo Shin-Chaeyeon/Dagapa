@@ -5,7 +5,7 @@
 <mapper namespace="UserMapper">
     <select id="findUser" parameterType="User" resultType="User">
         SELECT userno, id, pw, nickname, phone
-        FROM user
+        FROM `user`
         WHERE userno = #{userno}
     </select>
 </mapper>

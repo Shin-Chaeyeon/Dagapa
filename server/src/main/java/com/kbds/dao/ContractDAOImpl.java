@@ -29,4 +29,9 @@ public class ContractDAOImpl implements ContractDAO{
     public int addContract(Contract contract) {
         return sqlSession.insert(ns + "addContract", contract);
     }
+
+    @Override
+    public int terminateContract(int contractno) {
+        return sqlSession.update(ns + "terminateContract", contractno);
+    }
 }

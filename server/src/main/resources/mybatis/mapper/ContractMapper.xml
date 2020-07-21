@@ -5,8 +5,8 @@
 <mapper namespace="ContractMapper">
     <select id="findMyContracts" parameterType="int" resultType="Contract">
         SELECT contractno, lender, borrower, `type`, goods, duedate, picture, record, description, agreed
-        FROM contract
-        WHERE lender = #{userno} OR borrower = #{userno}
+        FROM contract c, `user` u
+        WHERE u.userno = #{userno} AND (c.lender = u.id OR c.borrower = u.id)
     </select>
 
     <select id="findContractByNo" parameterType="int" resultType="Contract">
@@ -15,8 +15,14 @@
         WHERE contractno = #{contractno}
     </select>
 
-    <select id="addContract" parameterType="Contract">
+    <insert id="addContract" parameterType="Contract">
         INSERT INTO contract (lender, borrower, `type`, goods, duedate, picture, record, description, agreed)
-        VALUES (#{lender},#{borrower},#{type},#{goods},#{duedate},#{picture},#{record},#{description},#{agreed},)
-    </select>
+        VALUES (#{lender}, #{borrower}, #{type}, #{goods}, #{duedate}, #{picture}, #{record}, #{description}, #{agreed})
+    </insert>
+
+    <update id="terminateContract" parameterType="int">
+        UPDATE contract
+        SET duedate = now()
+        WHERE contractno = #{contractno}
+    </update>
 </mapper>

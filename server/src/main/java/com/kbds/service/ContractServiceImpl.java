@@ -2,7 +2,6 @@ package com.kbds.service;
 
 import com.kbds.dao.ContractDAO;
 import com.kbds.vo.Contract;
-import com.kbds.vo.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,5 +29,10 @@ public class ContractServiceImpl implements ContractService{
     @Override
     public int addContract(Contract contract) {
         return contractDAO.addContract(contract);
+    }
+
+    @Override
+    public int terminateContract(int contractno) {
+        return contractDAO.terminateContract(contractno);
     }
 }

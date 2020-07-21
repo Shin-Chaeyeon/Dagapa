@@ -34,4 +34,10 @@ public class ContractController {
     public int addContract(@RequestBody Contract contract){
         return contractService.addContract(contract);
     }
+
+    @ApiOperation(value = "계약서 강제종료", notes = "")
+    @GetMapping("/terminate_contract/{contractno}")
+    public int terminateContract(@PathVariable int contractno){
+        return contractService.terminateContract(contractno);
+    }
 }
