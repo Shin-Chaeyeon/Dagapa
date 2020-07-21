@@ -24,4 +24,9 @@ public class ContractDAOImpl implements ContractDAO{
     public Contract findContractByNo(int contractno) {
         return sqlSession.selectOne(ns + "findContractByNo", contractno);
     }
+
+    @Override
+    public int addContract(Contract contract) {
+        return sqlSession.insert(ns + "addContract", contract);
+    }
 }

@@ -26,4 +26,9 @@ public class ContractServiceImpl implements ContractService{
         log.info("[SERVICE] :: findContractByNo(contractno)");
         return contractDAO.findContractByNo(contractno);
     }
+
+    @Override
+    public int addContract(Contract contract) {
+        return contractDAO.addContract(contract);
+    }
 }

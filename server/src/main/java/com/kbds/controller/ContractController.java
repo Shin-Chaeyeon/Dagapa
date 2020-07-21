@@ -2,7 +2,6 @@ package com.kbds.controller;
 
 import com.kbds.service.ContractService;
 import com.kbds.vo.Contract;
-import com.kbds.vo.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;

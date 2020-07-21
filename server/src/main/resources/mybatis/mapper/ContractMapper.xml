@@ -14,4 +14,9 @@
         FROM contract
         WHERE contractno = #{contractno}
     </select>
+
+    <select id="addContract" parameterType="Contract">
+        INSERT INTO contract (lender, borrower, `type`, goods, duedate, picture, record, description, agreed)
+        VALUES (#{lender},#{borrower},#{type},#{goods},#{duedate},#{picture},#{record},#{description},#{agreed},)
+    </select>
 </mapper>
