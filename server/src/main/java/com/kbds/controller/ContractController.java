@@ -28,4 +28,10 @@ public class ContractController {
     public Contract findContractByNo(@PathVariable int contractno){
         return contractService.findContractByNo(contractno);
     }
+
+    @ApiOperation(value = "계약서 추가하기", notes = "")
+    @PostMapping("/add_contract")
+    public int addContract(@RequestBody Contract contract){
+        return contractService.addContract(contract);
+    }
 }
