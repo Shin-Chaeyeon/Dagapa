@@ -35,4 +35,14 @@ public class ContractServiceImpl implements ContractService{
     public int terminateContract(int contractno) {
         return contractDAO.terminateContract(contractno);
     }
+
+    @Override
+    public int acceptContract(int contractno) {
+        return contractDAO.acceptContract(contractno);
+    }
+
+    @Override
+    public int rejectContract(int contractno) {
+        return contractDAO.rejectContract(contractno);
+    }
 }

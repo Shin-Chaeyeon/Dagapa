@@ -10,4 +10,6 @@ public interface ContractService {
     public Contract findContractByNo(int contractno);
     public int addContract(Contract contract);
     public int terminateContract(int contractno);
+    public int acceptContract(int contractno);
+    public int rejectContract(int contractno);
 }

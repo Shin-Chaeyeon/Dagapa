@@ -40,4 +40,17 @@ public class ContractController {
     public int terminateContract(@PathVariable int contractno){
         return contractService.terminateContract(contractno);
     }
+
+    @ApiOperation(value = "계약서 수락", notes = "")
+    @GetMapping("/accept_contract/{contractno}")
+    public int acceptContract(@PathVariable int contractno){
+        return contractService.acceptContract(contractno);
+    }
+
+    @ApiOperation(value = "계약서 거절", notes = "")
+    @GetMapping("/reject_contract/{contractno}")
+    public int rejectContract(@PathVariable int contractno){
+        return contractService.rejectContract(contractno);
+    }
+
 }
