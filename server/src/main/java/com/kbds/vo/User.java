@@ -14,4 +14,6 @@ public class User {
     private String pw;
     private String nickname;
     private String phone;
+    private String lent;
+    private String borrowed;
 }

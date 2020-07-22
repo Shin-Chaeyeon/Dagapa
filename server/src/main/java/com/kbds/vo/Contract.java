@@ -17,11 +17,13 @@ public class Contract {
     private String borrower;
     private int type;
     private String goods;
+    private String startdate;
     private String duedate;
     private String picture;
     private String record;
     private String description;
     private int agreed;
+    private int status;
 
     public void setDueDate(Timestamp timestamp){
         this.duedate = new SimpleDateFormat("yyyy-MM-dd").format(timestamp);
