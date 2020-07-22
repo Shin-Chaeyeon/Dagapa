@@ -18,7 +18,6 @@ public class ContractController {
     private final ContractService contractService;
 
     @ApiOperation(value = "나의 모든 계약서 보기", notes = "")
-//    @GetMapping(value = "/my_contracts/{userno}", produces = "text/plain;charset=UTF8")
     @GetMapping(value = "/my_contracts/{userno}")
     public List<Contract> findMyContracts(@PathVariable int userno){
         return contractService.findMyContracts(userno);
