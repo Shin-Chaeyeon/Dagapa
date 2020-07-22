@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 @Api(tags = {"***Contract***"})
@@ -20,25 +22,29 @@ public class ContractController {
     @ApiOperation(value = "나의 모든 계약서 보기", notes = "")
     @GetMapping(value = "/my_contracts/{userno}")
     public List<Contract> findMyContracts(@PathVariable int userno){
+        //마감일이 지난 계약서가 있는지 찾고, 있으면 종료시키기
+        List<Contract> temp = contractService.findMyContracts(userno);
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat d_format = new SimpleDateFormat("yyMMdd");
+        String today = d_format.format(cal.getTime());
+        for(Contract c : temp){
+            if(c.getStatus()==1 || c.getStatus()==3) continue;  //대기중이거나 이미 종료된 계약은 건너뛰기
+            String duedate = contractService.findDuedate(c.getContractno());
+            duedate = duedate.replace("-","");
+            if(Integer.parseInt(duedate) < Integer.parseInt(today))
+                contractService.terminateContract(c.getContractno());
+        }
         return contractService.findMyContracts(userno);
     }
 
     @ApiOperation(value = "계약서 상세보기", notes = "")
     @GetMapping("/contract/{contractno}")
-    public Contract findContractByNo(@PathVariable int contractno){
-        return contractService.findContractByNo(contractno);
-    }
+    public Contract findContractByNo(@PathVariable int contractno){ return contractService.findContractByNo(contractno); }
 
     @ApiOperation(value = "계약서 추가하기", notes = "")
     @PostMapping("/add_contract")
     public int addContract(@RequestBody Contract contract){
         return contractService.addContract(contract);
-    }
-
-    @ApiOperation(value = "계약서 강제종료", notes = "")
-    @GetMapping("/terminate_contract/{contractno}")
-    public int terminateContract(@PathVariable int contractno){
-        return contractService.terminateContract(contractno);
     }
 
     @ApiOperation(value = "계약서 수락", notes = "")
@@ -53,4 +59,9 @@ public class ContractController {
         return contractService.rejectContract(contractno);
     }
 
+    @ApiOperation(value = "계약서 강제종료", notes = "")
+    @GetMapping("/terminate_contract/{contractno}")
+    public int terminateContract(@PathVariable int contractno){
+        return contractService.terminateContract(contractno);
+    }
 }

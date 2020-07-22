@@ -32,11 +32,6 @@ public class ContractServiceImpl implements ContractService{
     }
 
     @Override
-    public int terminateContract(int contractno) {
-        return contractDAO.terminateContract(contractno);
-    }
-
-    @Override
     public int acceptContract(int contractno) {
         return contractDAO.acceptContract(contractno);
     }
@@ -44,5 +39,15 @@ public class ContractServiceImpl implements ContractService{
     @Override
     public int rejectContract(int contractno) {
         return contractDAO.rejectContract(contractno);
+    }
+
+    @Override
+    public String findDuedate(int contractno) {
+        return contractDAO.findDuedate(contractno);
+    }
+
+    @Override
+    public int terminateContract(int contractno) {
+        return contractDAO.terminateContract(contractno);
     }
 }

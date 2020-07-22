@@ -31,11 +31,6 @@ public class ContractDAOImpl implements ContractDAO{
     }
 
     @Override
-    public int terminateContract(int contractno) {
-        return sqlSession.update(ns + "terminateContract", contractno);
-    }
-
-    @Override
     public int acceptContract(int contractno) {
         return sqlSession.update(ns + "acceptContract", contractno);
     }
@@ -43,5 +38,15 @@ public class ContractDAOImpl implements ContractDAO{
     @Override
     public int rejectContract(int contractno) {
         return sqlSession.update(ns + "rejectContract", contractno);
+    }
+
+    @Override
+    public String findDuedate(int contractno) {
+        return sqlSession.selectOne(ns + "findDuedate", contractno);
+    }
+
+    @Override
+    public int terminateContract(int contractno) {
+        return sqlSession.update(ns + "terminateContract", contractno);
     }
 }

@@ -20,12 +20,6 @@
         VALUES (#{lender}, #{borrower}, #{type}, #{goods}, #{startdate}, #{duedate}, #{picture}, #{record}, #{description}, #{agreed}, {status})
     </insert>
 
-    <update id="terminateContract" parameterType="int">
-        UPDATE contract
-        SET status = 3
-        WHERE contractno = #{contractno}
-    </update>
-
     <update id="acceptContract" parameterType="int">
         UPDATE contract SET status = 2 WHERE contractno = #{contractno};
         UPDATE user SET lent = lent+1 WHERE id = (
@@ -39,4 +33,18 @@
     <delete id="rejectContract" parameterType="int">
         DELETE FROM contract WHERE contractno=#{contractno};
     </delete>
+
+    <select id="findDuedate" parameterType="int" resultType="String">
+        SELECT duedate FROM contract WHERE contractno = #{contractno}
+    </select>
+
+    <update id="terminateContract" parameterType="int">
+        UPDATE contract SET status = 3 WHERE contractno = #{contractno};
+        UPDATE user SET lent = lent-1 WHERE id = (
+            SELECT lender FROM contract WHERE contractno = #{contractno}
+        );
+        UPDATE user SET borrowed = borrowed-1 WHERE id = (
+            SELECT borrower FROM contract WHERE contractno = #{contractno}
+        );
+    </update>
 </mapper>
