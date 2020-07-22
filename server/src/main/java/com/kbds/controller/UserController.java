@@ -22,6 +22,7 @@ public class UserController {
         User search = userService.findUser(user);
         if(user.getPw().equals(search.getPw())) {
             log.info("[CONTROLLER] :: login()");
+            log.info("[CONTROLLER] :: "+search.getId()+" "+search.getPw());
             return search;
         }
         else return null;
