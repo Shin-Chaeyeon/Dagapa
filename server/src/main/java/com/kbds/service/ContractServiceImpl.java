@@ -21,8 +21,17 @@ public class ContractServiceImpl implements ContractService{
     }
 
     @Override
+    public List<Contract> findMyLentContracts(int userno) {
+        return contractDAO.findMyLentContracts(userno);
+    }
+
+    @Override
+    public List<Contract> findMyBorrowedContracts(int userno) {
+        return contractDAO.findMyBorrowedContracts(userno);
+    }
+
+    @Override
     public Contract findContractByNo(int contractno) {
-        log.info("[SERVICE] :: findContractByNo(contractno)");
         return contractDAO.findContractByNo(contractno);
     }
 

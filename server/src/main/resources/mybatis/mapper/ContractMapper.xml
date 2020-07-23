@@ -9,6 +9,18 @@
         WHERE u.userno = #{userno} AND (c.lender = u.id OR c.borrower = u.id)
     </select>
 
+    <select id="findMyLentContracts" parameterType="int" resultType="Contract">
+        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, picture, record, description, agreed, status
+        FROM contract c, `user` u
+        WHERE u.userno = #{userno} AND c.lender = u.id AND status = 2
+    </select>
+
+    <select id="findMyBorrowedContracts" parameterType="int" resultType="Contract">
+        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, picture, record, description, agreed, status
+        FROM contract c, `user` u
+        WHERE u.userno = #{userno} AND c.borrower = u.id AND status = 2
+    </select>
+
     <select id="findContractByNo" parameterType="int" resultType="Contract">
         SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, picture, record, description, agreed, status
         FROM contract
@@ -17,7 +29,7 @@
 
     <insert id="addContract" parameterType="Contract">
         INSERT INTO contract (lender, borrower, `type`, goods, startdate,duedate, picture, record, description, agreed, status)
-        VALUES (#{lender}, #{borrower}, #{type}, #{goods}, #{startdate}, #{duedate}, #{picture}, #{record}, #{description}, #{agreed}, {status})
+        VALUES (#{lender}, #{borrower}, #{type}, #{goods}, #{startdate}, #{duedate}, #{picture}, #{record}, #{description}, #{agreed}, #{status})
     </insert>
 
     <update id="acceptContract" parameterType="int">

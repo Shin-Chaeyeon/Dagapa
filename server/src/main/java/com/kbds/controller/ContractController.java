@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -37,9 +38,23 @@ public class ContractController {
         return contractService.findMyContracts(userno);
     }
 
-    @ApiOperation(value = "계약서 상세보기", notes = "")
+    @ApiOperation(value = "나의 모든 임차 계약서 보기", notes = "")
+    @GetMapping(value = "/my_lent_contracts/{userno}")
+    public List<Contract> findMyLentContracts(@PathVariable int userno){
+        return contractService.findMyLentContracts(userno);
+    }
+
+    @ApiOperation(value = "나의 모든 임대 계약서 보기", notes = "")
+    @GetMapping(value = "/my_borrowed_contracts/{userno}")
+    public List<Contract> findMyBorrowedContracts(@PathVariable int userno){
+        return contractService.findMyBorrowedContracts(userno);
+    }
+
+    @ApiOperation(value = "계약서 상세보기", notes = "", produces = "application/json; charset=UTF-8")
     @GetMapping("/contract/{contractno}")
-    public Contract findContractByNo(@PathVariable int contractno){ return contractService.findContractByNo(contractno); }
+    public Contract findContractByNo(@PathVariable int contractno){
+        return contractService.findContractByNo(contractno);
+    }
 
     @ApiOperation(value = "계약서 추가하기", notes = "")
     @PostMapping("/add_contract")
