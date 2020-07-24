@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
         EditText id = findViewById(R.id.idinput);
         EditText pw = findViewById(R.id.pwinput);
         User user = new User();
-
-
     }
 
 }

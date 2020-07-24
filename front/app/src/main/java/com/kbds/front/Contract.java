@@ -1,5 +1,13 @@
 package com.kbds.front;
 
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Builder
 public class Contract {
     int contractno;
     String lender;
