@@ -38,7 +38,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:ems="10"
-                android:text="ID" />
+                android:hint="ID"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/nanumsquare_acb"
+                android:textSize="20dp"/>
 
             <EditText
                 android:id="@+id/pwinput"
@@ -46,7 +49,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:ems="10"
-                android:text="PW" />
+                android:hint="PW"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/nanumsquare_acb"
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/textView6"
@@ -65,15 +71,19 @@
                     android:id="@+id/signupbtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SIGN UP" />
+                    android:text="SIGN UP"
+                    tools:layout_editor_absoluteX="99dp"
+                    tools:layout_editor_absoluteY="136dp"
+                    style="@style/CancelBtn"/>
 
                 <Button
                     android:id="@+id/signinbtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SIGN IN" />
+                    android:text="SIGN IN"
+                    tools:layout_editor_absoluteX="225dp"
+                    tools:layout_editor_absoluteY="139dp"
+                    style="@style/SubmitBtn"/>
 
             </LinearLayout>
 
