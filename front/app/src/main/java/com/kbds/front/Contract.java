@@ -15,8 +15,8 @@ public class Contract {
     int type;
     String goods;
     String duedate;
-    String picture;
-    String record;
+    String imageurl;
+    String audiourl;
     String description;
     int agreed;
 }
