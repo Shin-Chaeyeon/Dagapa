@@ -3,12 +3,16 @@ package com.kbds.front;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.net.URL;
 import java.net.URLDecoder;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
@@ -26,7 +30,15 @@ public class MainActivity extends AppCompatActivity {
         Button loginbtn = findViewById(R.id.signinbtn);
         EditText id = findViewById(R.id.idinput);
         EditText pw = findViewById(R.id.pwinput);
-        User user = new User();
+        User userToCheck = new User();
+        userToCheck.setId(id.getText().toString());
+        userToCheck.setPw(id.getText().toString());
+
+        checkUser(userToCheck);
+    }
+    //https://ourcstory.tistory.com/51 보고하는중
+    private void checkUser(User userToCheck) {
+
     }
 
 }
