@@ -3,6 +3,8 @@ package com.kbds.controller;
 import com.kbds.service.ContractService;
 import com.kbds.vo.Contract;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -70,7 +73,7 @@ public class ContractController {
 
     @ApiOperation(value = "계약서 추가하기", notes = "")
     @PostMapping("/add_contract")
-    public int addContract(@RequestBody Contract contract, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    public int addContract(@RequestBody Contract contract, HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         return contractService.addContract(contract);
