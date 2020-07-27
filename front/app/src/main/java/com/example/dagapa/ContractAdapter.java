@@ -3,6 +3,7 @@ package com.example.dagapa;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,17 +54,34 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         TextView textView2;
-
+        ImageView state;
         public ViewHolder(View itemView) {
             super(itemView);
 
             textView = itemView.findViewById(R.id.textView);
             textView2 = itemView.findViewById(R.id.textView2);
+            state = itemView.findViewById(R.id.state);
+
         }
 
         public void setItem(Contract item) {
             textView.setText(item.getGoods());
             textView2.setText(item.getDuedate());
+
+            int got_state = item.getStatus();
+            //1 대기
+            //2 진행
+            //3 완료
+            if(got_state==1){
+                state.setImageResource(R.drawable.green);
+            } else if(got_state ==2){
+                state.setImageResource(R.drawable.red);
+            } else{
+                state.setImageResource(R.drawable.gray);
+
+            }
+
+
         }
 
     }
