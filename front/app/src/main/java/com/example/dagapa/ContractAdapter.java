@@ -55,12 +55,15 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
         TextView textView;
         TextView textView2;
         ImageView state;
+        ImageView objects;
+
         public ViewHolder(View itemView) {
             super(itemView);
 
             textView = itemView.findViewById(R.id.textView);
             textView2 = itemView.findViewById(R.id.textView2);
             state = itemView.findViewById(R.id.state);
+            objects= itemView.findViewById(R.id.objects);
 
         }
 
@@ -78,8 +81,16 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
                 state.setImageResource(R.drawable.red);
             } else{
                 state.setImageResource(R.drawable.gray);
-
             }
+
+            int got_type = item.getType();
+            if(got_type==1){
+                objects.setImageResource(R.drawable.objects);
+            } else{
+                objects.setImageResource(R.drawable.money);
+            }
+
+
 
 
         }
