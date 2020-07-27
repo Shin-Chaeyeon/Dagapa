@@ -22,8 +22,6 @@ public class Contract {
     private String startdate;
     private String duedate;
     private String imageurl;
-    private String audiourl;
     private String description;
-    private int agreed;
     private int status;
 }

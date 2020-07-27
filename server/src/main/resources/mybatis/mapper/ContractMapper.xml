@@ -4,32 +4,32 @@
 
 <mapper namespace="ContractMapper">
     <select id="findMyContracts" parameterType="int" resultType="Contract">
-        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, audiourl, description, agreed, status
+        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status
         FROM contract c, `user` u
         WHERE u.userno = #{userno} AND (c.lender = u.id OR c.borrower = u.id)
     </select>
 
     <select id="findMyLentContracts" parameterType="int" resultType="Contract">
-        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, audiourl, description, agreed, status
+        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status
         FROM contract c, `user` u
         WHERE u.userno = #{userno} AND c.lender = u.id AND status = 2
     </select>
 
     <select id="findMyBorrowedContracts" parameterType="int" resultType="Contract">
-        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, audiourl, description, agreed, status
+        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status
         FROM contract c, `user` u
         WHERE u.userno = #{userno} AND c.borrower = u.id AND status = 2
     </select>
 
     <select id="findContractByNo" parameterType="int" resultType="Contract">
-        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, audiourl, description, agreed, status
+        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status
         FROM contract
         WHERE contractno = #{contractno}
     </select>
 
     <insert id="addContract" parameterType="Contract">
-        INSERT INTO contract (lender, borrower, `type`, goods, startdate, duedate, imageurl, audiourl, description, agreed, status)
-        VALUES (#{lender}, #{borrower}, #{type}, #{goods}, #{startdate}, #{duedate}, #{imageurl}, #{audiourl}, #{description}, #{agreed}, #{status})
+        INSERT INTO contract (lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status)
+        VALUES (#{lender}, #{borrower}, #{type}, #{goods}, #{startdate}, #{duedate}, #{imageurl}, #{description}, #{status})
     </insert>
 
     <update id="acceptContract" parameterType="int">
@@ -43,7 +43,7 @@
     </update>
 
     <delete id="rejectContract" parameterType="int">
-        DELETE FROM contract WHERE contractno=#{contractno};
+        DELETE FROM contract WHERE contractno = #{contractno};
     </delete>
 
     <select id="findDuedate" parameterType="int" resultType="String">
