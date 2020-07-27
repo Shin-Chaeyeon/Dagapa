@@ -67,7 +67,7 @@ public class ContractServiceImpl implements ContractService, FileService<Contrac
     @Override
     @Transactional
     public int addContract(Contract contract) throws IOException {
-        fileSave(contract);
+        if(contract.getImage() != null) fileSave(contract);
         return contractDAO.addContract(contract);
     }
 
