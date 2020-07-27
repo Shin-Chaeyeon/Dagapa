@@ -12,10 +12,8 @@ public class Contract implements  Serializable {
     String goods;
     String startdate;
     String duedate;
-    String umageurl;
-    String audiourl;
+    String imageurl;
     String description;
-    int agreed;
     int status;
 
     // 생성자
@@ -88,20 +86,12 @@ public class Contract implements  Serializable {
         this.duedate = duedate;
     }
 
-    public String getUmageurl() {
-        return umageurl;
+    public String getImageurl() {
+        return imageurl;
     }
 
-    public void setUmageurl(String umageurl) {
-        this.umageurl = umageurl;
-    }
-
-    public String getAudiourl() {
-        return audiourl;
-    }
-
-    public void setAudiourl(String audiourl) {
-        this.audiourl = audiourl;
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
 
     public String getDescription() {
@@ -112,14 +102,6 @@ public class Contract implements  Serializable {
         this.description = description;
     }
 
-    public int getAgreed() {
-        return agreed;
-    }
-
-    public void setAgreed(int agreed) {
-        this.agreed = agreed;
-    }
-
     public int getStatus() {
         return status;
     }
@@ -127,7 +109,6 @@ public class Contract implements  Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
-
 
     @Override
     public String toString() {
@@ -140,10 +121,8 @@ public class Contract implements  Serializable {
                 ", goods='" + goods + '\'' +
                 ", startdate='" + startdate + '\'' +
                 ", duedate='" + duedate + '\'' +
-                ", umageurl='" + umageurl + '\'' +
-                ", audiourl='" + audiourl + '\'' +
+                ", imageurl='" + imageurl + '\'' +
                 ", description='" + description + '\'' +
-                ", agreed=" + agreed +
                 ", status=" + status +
                 '}';
     }
