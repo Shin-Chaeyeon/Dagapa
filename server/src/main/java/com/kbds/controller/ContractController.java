@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -27,7 +26,7 @@ public class ContractController {
 
     @ApiOperation(value = "나의 모든 계약서 보기", notes = "")
     @GetMapping(value = "/my_contracts/{id}")
-    public List<Contract> findMyContracts(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    public List<Contract> findMyContracts(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws Exception{
         log.info("CONTROLLER :: my_contracts");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -59,7 +58,7 @@ public class ContractController {
 
     @ApiOperation(value = "나의 모든 임차 계약서 보기", notes = "")
     @GetMapping(value = "/my_lent_contracts/{id}")
-    public List<Contract> findMyLentContracts(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    public List<Contract> findMyLentContracts(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws Exception{
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         return contractService.findMyLentContracts(id);
@@ -67,7 +66,7 @@ public class ContractController {
 
     @ApiOperation(value = "나의 모든 임대 계약서 보기", notes = "")
     @GetMapping(value = "/my_borrowed_contracts/{id}")
-    public List<Contract> findMyBorrowedContracts(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    public List<Contract> findMyBorrowedContracts(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws Exception{
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         return contractService.findMyBorrowedContracts(id);
@@ -75,7 +74,7 @@ public class ContractController {
 
     @ApiOperation(value = "계약서 상세보기", notes = "")
     @GetMapping("/contract/{contractno}")
-    public Contract findContractByNo(@PathVariable int contractno, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    public Contract findContractByNo(@PathVariable int contractno, HttpServletRequest request, HttpServletResponse response) throws Exception{
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         return contractService.findContractByNo(contractno);
@@ -92,7 +91,7 @@ public class ContractController {
 
     @ApiOperation(value = "계약서 수락", notes = "")
     @GetMapping("/accept_contract/{contractno}")
-    public int acceptContract(@PathVariable int contractno, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    public int acceptContract(@PathVariable int contractno, HttpServletRequest request, HttpServletResponse response) throws Exception{
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         return contractService.acceptContract(contractno);
@@ -100,7 +99,7 @@ public class ContractController {
 
     @ApiOperation(value = "계약서 거절", notes = "")
     @GetMapping("/reject_contract/{contractno}")
-    public int rejectContract(@PathVariable int contractno, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    public int rejectContract(@PathVariable int contractno, HttpServletRequest request, HttpServletResponse response) throws Exception{
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         return contractService.rejectContract(contractno);
@@ -108,7 +107,7 @@ public class ContractController {
 
     @ApiOperation(value = "계약서 강제종료", notes = "")
     @GetMapping("/terminate_contract/{contractno}")
-    public int terminateContract(@PathVariable int contractno, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    public int terminateContract(@PathVariable int contractno, HttpServletRequest request, HttpServletResponse response) throws Exception{
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         return contractService.terminateContract(contractno);

@@ -2,7 +2,6 @@ package com.kbds.service;
 
 import com.kbds.vo.Contract;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface ContractService {
@@ -15,5 +14,4 @@ public interface ContractService {
     public int rejectContract(int contractno);
     public String findDuedate(int contractno);
     public int terminateContract(int contractno);
-
 }

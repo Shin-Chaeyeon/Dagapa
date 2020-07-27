@@ -90,5 +90,4 @@ public class ContractServiceImpl implements ContractService, FileService<Contrac
     public int terminateContract(int contractno) {
         return contractDAO.terminateContract(contractno);
     }
-
 }
