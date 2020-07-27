@@ -35,20 +35,16 @@ import static java.sql.DriverManager.println;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText editText = null;
+
     TextView textView = null;
     TextView result = null;
-    String got_name = null;
-    String got_mobile = null;
-    Button button = null;
-    RecyclerView recyclerView = null;
+    String got_ID = null;
+    String got_NAME = null;
 
+    RecyclerView recyclerView = null;
     Context context = null;
 
     static RequestQueue requestQueue = null;
-
-    // 아래 지울것.
-//    List<Contract> myContracts = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.tv_info);
         result = findViewById(R.id.result);
-        button = findViewById(R.id.button);
-        editText = findViewById(R.id.editText);
         recyclerView = findViewById(R.id.recyclerView);
 
         context = getApplicationContext();
@@ -69,36 +63,32 @@ public class MainActivity extends AppCompatActivity {
          * */
         Intent intent = getIntent();
         processIntent(intent);
-        textView.setText(got_name + " / 유저번호 :  " + got_mobile);
+        textView.setText("ID : " + got_ID + " / NAME : " + got_NAME);
 
-
-
-//        // 버튼 이벤트
-//        button.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view) {
-//                makeRequest(got_mobile);
-//            }
-//        });
 
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
         //여기서 AsyncTask 호출하기
-        MyAsyncTask myAsyncTask = new MyAsyncTask(result, recyclerView, got_mobile,context);
+        MyAsyncTask myAsyncTask = new MyAsyncTask(result, recyclerView, got_ID, context);
         myAsyncTask.execute();
     }
 
     private void processIntent(Intent intent) {
         if(intent !=null){
-            Bundle bundle = intent.getExtras();
-            Contract p = (Contract) bundle.getSerializable("personInfo");
-            if(intent != null){
-                got_name = p.goods.toString();
-                got_mobile = p.duedate.toString();
-                Log.d("transfered data : ", p.goods + " , " + p.duedate);
-            }
+//            Bundle bundle = intent.getExtras();
+//            Contract p = (Contract) bundle.getSerializable("personInfo");
+
+            got_ID = intent.getExtras().getString("userID");
+            got_NAME = intent.getExtras().getString("userName");
+            Log.d("INTENT", "LOGIN에서 받은 DATA : " + got_ID + " / " + got_NAME);
+
+//            if(intent != null){
+//                got_name = p.goods.toString();
+//                got_mobile = p.duedate.toString();
+//                Log.d("transfered data : ", p.goods + " , " + p.duedate);
+//            }
         }
     }//end processIntent method
 
@@ -191,25 +181,22 @@ class MyAsyncTask extends AsyncTask<String, String, String>{
 
     TextView result; // REST로 받아온 JSON 데이터를 표시하기 위한 textview.
     RecyclerView recyclerView; // Json을 객체화하고 그것을 기반으로 리사이클러뷰를 표현하기 위함.
-    String userno;
+
+    String userID;
     Context context;
     //화면에 띄워줄 것 있으면 여기서 생성자로 받아올 것.
-    public MyAsyncTask(TextView textView, RecyclerView recyclerView, String usernum, Context context){
+    public MyAsyncTask(TextView textView, RecyclerView recyclerView, String userID, Context context){
         this.result = textView;
         this.recyclerView = recyclerView;
-        this.userno = usernum;
+        this.userID = userID;
         this.context= context;
-    }
-
-    //화면에 띄워줄 것 있으면 여기서 생성자로 받아올 것.
-    public MyAsyncTask(TextView textView,  String usernum){
-        this.result = textView;
-        this.userno = usernum;
     }
 
     //----------------------------------------------------------------------------
     @Override
-    protected String doInBackground(String... strings) { return null; }
+    protected String doInBackground(String... strings) {
+
+        return null; }
     @Override
     protected void onProgressUpdate(String... values) { super.onProgressUpdate(values); }
     @Override
@@ -220,45 +207,48 @@ class MyAsyncTask extends AsyncTask<String, String, String>{
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Log.d("state", "onPreExecute 진입");
-        makeRequest(userno);
-        Log.d("state", "onPreExecute makeRequest함수 진행 완료");
+        Log.d("[onPreExecute]", "■■■■■■■■■■■■■■■■■■■■ onPreExecute 진입");
+        Log.d("[onPreExecute]", "■■■■■■■■■■■■■■■■■■■■ userID : " + userID);
+        makeRequest(userID);
+        Log.d("[onPreExecute]", "■■■■■■■■■■■■■■■■■■■■ onPreExecute makeRequest함수 진행 완료");
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
+            Log.d("[onPreExecute]", "■■■■■■■■■■■■■■■■■■■■ onPreExecute 3초 SLEEP 진행 완료");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
     }
 
     // onPreExecute에서 REST 요청하고 JSON을 파싱한 후에 ,
     // adapter로 recyclerview 처리하는 곳
     @Override
     protected void onPostExecute(String s) {
-        Log.d("state", "onPostExecute 단계 진입");
+        Log.d("[onPostExecute]", "■■■■■■■■■■■■■■■■■■■■ onPostExecute 단계 진입");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager( context, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
         for(Contract c : myContracts) {
-            Log.d("test", c.toString());
+            Log.d("[onPostExecute]", "객체 toString: " + c.toString());
         }
-
-        Log.d("test", "@@@@@@@@@@@@@@@@@"+myContracts.size());
+        Log.d("[onPostExecute]", "■■■■■■■■■■■■■■■■■■■■ 받은 JSON 객체 크기 : "+myContracts.size());
 
         ContractAdapter adapter = new ContractAdapter();
         for(Contract c : myContracts){
             adapter.addItem(c);
         }
         recyclerView.setAdapter(adapter);
+
         super.onPostExecute(s);
     }
 
 
-    public void makeRequest(String userno) {
+    public void makeRequest(String userID) {
 //         지환 연수원 ip
-        String url = "http://192.168.100.160:8080/my_contracts/" + userno;
+//        String url = "http://192.168.100.160:8080/my_contracts/" + userID;
 //         채연 연수원 ip
-//        String url = "http://192.168.100.197:8080/my_contracts/" + userno;
+        String url = "http://192.168.100.197:8080/my_contracts/" + userID;
 //         지환 집 ip
 //        String url = "http://192.168.123.106:8080/my_contracts/" + userno;
 
@@ -269,6 +259,7 @@ class MyAsyncTask extends AsyncTask<String, String, String>{
                     @Override
                     public void onResponse(String response) {
 //                        println("응답 -> " + response);
+                        Log.d("GOTGOT" , response);
                         processResponse(response);
                     }
                 },
@@ -290,9 +281,10 @@ class MyAsyncTask extends AsyncTask<String, String, String>{
     }//end makeRequest method
 
     public void processResponse(String response) {
+        Log.d("Response String", response);
         Gson gson = new Gson();
         Contract[] temp_array = gson.fromJson(response, Contract[].class);
         myContracts = Arrays.asList(temp_array);
-        Log.d("test", "@@@@!@@!@!@!@!@!@!@"+myContracts.size());
+        Log.d("[processResponse]", "■■■■■■■■■■■■■■■■■■■■"+myContracts.size());
     }//end processResponse method
 }
