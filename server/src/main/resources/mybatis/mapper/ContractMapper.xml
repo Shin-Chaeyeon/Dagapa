@@ -3,22 +3,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ContractMapper">
-    <select id="findMyContracts" parameterType="int" resultType="Contract">
+    <select id="findMyContracts" parameterType="String" resultType="Contract">
         SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status
         FROM contract c, `user` u
-        WHERE u.userno = #{userno} AND (c.lender = u.id OR c.borrower = u.id)
+        WHERE u.id = #{id} AND (c.lender = u.id OR c.borrower = u.id)
     </select>
 
-    <select id="findMyLentContracts" parameterType="int" resultType="Contract">
+    <select id="findMyLentContracts" parameterType="String" resultType="Contract">
         SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status
         FROM contract c, `user` u
-        WHERE u.userno = #{userno} AND c.lender = u.id AND status = 2
+        WHERE u.id = #{id} AND c.lender = u.id AND status = 2
     </select>
 
-    <select id="findMyBorrowedContracts" parameterType="int" resultType="Contract">
+    <select id="findMyBorrowedContracts" parameterType="String" resultType="Contract">
         SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status
         FROM contract c, `user` u
-        WHERE u.userno = #{userno} AND c.borrower = u.id AND status = 2
+        WHERE u.id = #{id} AND c.borrower = u.id AND status = 2
     </select>
 
     <select id="findContractByNo" parameterType="int" resultType="Contract">

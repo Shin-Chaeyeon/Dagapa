@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.List;
 
 public interface ContractService {
-    public List<Contract> findMyContracts(int userno);
-    public List<Contract> findMyLentContracts(int userno);
-    public List<Contract> findMyBorrowedContracts(int userno);
+    public List<Contract> findMyContracts(String id);
+    public List<Contract> findMyLentContracts(String id);
+    public List<Contract> findMyBorrowedContracts(String id);
     public Contract findContractByNo(int contractno);
     public int addContract(Contract contract) throws Exception;
     public int acceptContract(int contractno);

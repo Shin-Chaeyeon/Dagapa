@@ -23,14 +23,14 @@ public class ContractController {
     private final ContractService contractService;
 
     @ApiOperation(value = "나의 모든 계약서 보기", notes = "")
-    @GetMapping(value = "/my_contracts/{userno}")
-    public List<Contract> findMyContracts(@PathVariable int userno, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    @GetMapping(value = "/my_contracts/{id}")
+    public List<Contract> findMyContracts(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
         log.info("CONTROLLER :: my_contracts");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
         //마감일이 지난 계약서가 있는지 찾고, 있으면 종료시키기
-        List<Contract> temp = contractService.findMyContracts(userno);
+        List<Contract> temp = contractService.findMyContracts(id);
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat d_format = new SimpleDateFormat("yyMMdd");
         String today = d_format.format(cal.getTime());
@@ -41,23 +41,23 @@ public class ContractController {
             if(Integer.parseInt(duedate) < Integer.parseInt(today))
                 contractService.terminateContract(c.getContractno());
         }
-        return contractService.findMyContracts(userno);
+        return contractService.findMyContracts(id);
     }
 
     @ApiOperation(value = "나의 모든 임차 계약서 보기", notes = "")
-    @GetMapping(value = "/my_lent_contracts/{userno}")
-    public List<Contract> findMyLentContracts(@PathVariable int userno, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    @GetMapping(value = "/my_lent_contracts/{id}")
+    public List<Contract> findMyLentContracts(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        return contractService.findMyLentContracts(userno);
+        return contractService.findMyLentContracts(id);
     }
 
     @ApiOperation(value = "나의 모든 임대 계약서 보기", notes = "")
-    @GetMapping(value = "/my_borrowed_contracts/{userno}")
-    public List<Contract> findMyBorrowedContracts(@PathVariable int userno, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+    @GetMapping(value = "/my_borrowed_contracts/{id}")
+    public List<Contract> findMyBorrowedContracts(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        return contractService.findMyBorrowedContracts(userno);
+        return contractService.findMyBorrowedContracts(id);
     }
 
     @ApiOperation(value = "계약서 상세보기", notes = "")

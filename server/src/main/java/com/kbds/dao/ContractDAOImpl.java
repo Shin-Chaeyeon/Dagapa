@@ -15,18 +15,18 @@ public class ContractDAOImpl implements ContractDAO{
     private SqlSession sqlSession;
 
     @Override
-    public List<Contract> findMyContracts(int userno) {
-        return sqlSession.selectList(ns + "findMyContracts", userno);
+    public List<Contract> findMyContracts(String id) {
+        return sqlSession.selectList(ns + "findMyContracts", id);
     }
 
     @Override
-    public List<Contract> findMyLentContracts(int userno) {
-        return sqlSession.selectList(ns + "findMyLentContracts", userno);
+    public List<Contract> findMyLentContracts(String id) {
+        return sqlSession.selectList(ns + "findMyLentContracts", id);
     }
 
     @Override
-    public List<Contract> findMyBorrowedContracts(int userno) {
-        return sqlSession.selectList(ns + "findMyBorrowedContracts", userno);
+    public List<Contract> findMyBorrowedContracts(String id) {
+        return sqlSession.selectList(ns + "findMyBorrowedContracts", id);
     }
 
     @Override

@@ -45,18 +45,18 @@ public class ContractServiceImpl implements ContractService, FileService<Contrac
     }
 
     @Override
-    public List<Contract> findMyContracts(int userno) {
-        return contractDAO.findMyContracts(userno);
+    public List<Contract> findMyContracts(String id) {
+        return contractDAO.findMyContracts(id);
     }
 
     @Override
-    public List<Contract> findMyLentContracts(int userno) {
-        return contractDAO.findMyLentContracts(userno);
+    public List<Contract> findMyLentContracts(String id) {
+        return contractDAO.findMyLentContracts(id);
     }
 
     @Override
-    public List<Contract> findMyBorrowedContracts(int userno) {
-        return contractDAO.findMyBorrowedContracts(userno);
+    public List<Contract> findMyBorrowedContracts(String id) {
+        return contractDAO.findMyBorrowedContracts(id);
     }
 
     @Override
