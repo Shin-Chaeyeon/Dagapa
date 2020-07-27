@@ -28,7 +28,7 @@
     </select>
 
     <insert id="addContract" parameterType="Contract">
-        INSERT INTO contract (lender, borrower, `type`, goods, startdate,duedate, imageurl, audiourl, description, agreed, status)
+        INSERT INTO contract (lender, borrower, `type`, goods, startdate, duedate, imageurl, audiourl, description, agreed, status)
         VALUES (#{lender}, #{borrower}, #{type}, #{goods}, #{startdate}, #{duedate}, #{imageurl}, #{audiourl}, #{description}, #{agreed}, #{status})
     </insert>
 

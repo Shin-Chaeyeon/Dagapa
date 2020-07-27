@@ -70,7 +70,7 @@ public class ContractController {
 
     @ApiOperation(value = "계약서 추가하기", notes = "")
     @PostMapping("/add_contract")
-    public int addContract(@RequestBody Contract contract, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public int addContract(Contract contract, HttpServletRequest request, HttpServletResponse response) throws Exception {
         log.info("CONTROLLER :: add_contract");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
