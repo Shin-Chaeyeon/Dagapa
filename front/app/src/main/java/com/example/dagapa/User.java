@@ -4,22 +4,12 @@ import java.io.Serializable;
 
 public class User  implements Serializable {
 
-    String userno;
     String id;
     String pw;
-    String nickname;
+    String name;
     String phone;
     String lent;
     String borrowed;
-
-
-    public String getUserno() {
-        return userno;
-    }
-
-    public void setUserno(String userno) {
-        this.userno = userno;
-    }
 
     public String getId() {
         return id;
@@ -37,12 +27,12 @@ public class User  implements Serializable {
         this.pw = pw;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getName() {
+        return name;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {
@@ -72,10 +62,9 @@ public class User  implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "userno='" + userno + '\'' +
-                ", id='" + id + '\'' +
+                "id='" + id + '\'' +
                 ", pw='" + pw + '\'' +
-                ", nickname='" + nickname + '\'' +
+                ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", lent='" + lent + '\'' +
                 ", borrowed='" + borrowed + '\'' +
