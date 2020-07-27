@@ -209,6 +209,15 @@ class MyAsyncTask extends AsyncTask<String, String, String>{
 
     //----------------------------------------------------------------------------
     @Override
+    protected String doInBackground(String... strings) { return null; }
+    @Override
+    protected void onProgressUpdate(String... values) { super.onProgressUpdate(values); }
+    @Override
+    protected void onCancelled() { super.onCancelled(); }
+    //----------------------------------------------------------------------------
+
+    // REST 요청하고 처리하는 과정
+    @Override
     protected void onPreExecute() {
         super.onPreExecute();
         Log.d("state", "onPreExecute 진입");
@@ -220,22 +229,8 @@ class MyAsyncTask extends AsyncTask<String, String, String>{
             e.printStackTrace();
         }
     }
-    @Override
-    protected void onProgressUpdate(String... values) { super.onProgressUpdate(values); }
-    @Override
-    protected void onCancelled() { super.onCancelled(); }
-    //----------------------------------------------------------------------------
 
-    // REST 요청하고 처리하는 과정
-    @Override
-    protected String doInBackground(String... strings) {
-//        Log.d("state", "doInBackgorund 진입");
-//        makeRequest(userno);
-//        Log.d("state", "doInbackgroubd makeRequest함수 진행 완료");
-        return null;
-    }
-
-    // doInBackground에서 REST 요청하고 JSON을 파싱한 후에 ,
+    // onPreExecute에서 REST 요청하고 JSON을 파싱한 후에 ,
     // adapter로 recyclerview 처리하는 곳
     @Override
     protected void onPostExecute(String s) {
@@ -252,13 +247,8 @@ class MyAsyncTask extends AsyncTask<String, String, String>{
 
         ContractAdapter adapter = new ContractAdapter();
         for(Contract c : myContracts){
-//            adapter.addItem(new Contract(c.getGoods(), c.getDuedate()));
             adapter.addItem(c);
         }
-//        adapter.addItem(new Contract("김민수", "010-1000-1000"));
-//        adapter.addItem(new Contract("김하늘", "010-2000-2000"));
-//        adapter.addItem(new Contract("홍길동", "010-3000-3000"));
-
         recyclerView.setAdapter(adapter);
         super.onPostExecute(s);
     }
@@ -297,21 +287,12 @@ class MyAsyncTask extends AsyncTask<String, String, String>{
         };
         request.setShouldCache(false);
         requestQueue.add(request);
-//        println("요청 보냄.");
     }//end makeRequest method
 
     public void processResponse(String response) {
-//        println("\n[processResponse function area] ");
         Gson gson = new Gson();
         Contract[] temp_array = gson.fromJson(response, Contract[].class);
-//        List<Contract> myContracts = Arrays.asList(temp_array);
         myContracts = Arrays.asList(temp_array);
-//        for(Contract c : myContracts) println(c.duedate+" ");
         Log.d("test", "@@@@!@@!@!@!@!@!@!@"+myContracts.size());
     }//end processResponse method
-
-    public void println(String data) {
-        result.append(data + "\n");
-    }
-
 }
