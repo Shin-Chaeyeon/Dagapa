@@ -3,25 +3,33 @@ package com.example.dagapa;
 import java.io.Serializable;
 
 public class Contract implements  Serializable {
-//public class Contract implements Serializable {
 
+    String iamage;
     int contractno;
     String lender;
     String borrower;
     int type;
     String goods;
+    String startdate;
     String duedate;
-    String picture;
-    String record;
+    String umageurl;
+    String audiourl;
     String description;
     int agreed;
+    int status;
 
-    //생성자 테스트
-
-
+    // 생성자
     public Contract(String goods, String duedate) {
         this.goods = goods;
         this.duedate = duedate;
+    }
+
+    public String getIamage() {
+        return iamage;
+    }
+
+    public void setIamage(String iamage) {
+        this.iamage = iamage;
     }
 
     public int getContractno() {
@@ -64,6 +72,14 @@ public class Contract implements  Serializable {
         this.goods = goods;
     }
 
+    public String getStartdate() {
+        return startdate;
+    }
+
+    public void setStartdate(String startdate) {
+        this.startdate = startdate;
+    }
+
     public String getDuedate() {
         return duedate;
     }
@@ -72,20 +88,20 @@ public class Contract implements  Serializable {
         this.duedate = duedate;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getUmageurl() {
+        return umageurl;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setUmageurl(String umageurl) {
+        this.umageurl = umageurl;
     }
 
-    public String getRecord() {
-        return record;
+    public String getAudiourl() {
+        return audiourl;
     }
 
-    public void setRecord(String record) {
-        this.record = record;
+    public void setAudiourl(String audiourl) {
+        this.audiourl = audiourl;
     }
 
     public String getDescription() {
@@ -104,32 +120,31 @@ public class Contract implements  Serializable {
         this.agreed = agreed;
     }
 
-//
-//    String name;
-//    String mobile;
-//
-//    public Contract(String name, String mobile){
-//        this.name = name;
-//        this.mobile = mobile;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getMobile() {
-//        return mobile;
-//    }
-//
-//    public void setMobile(String mobile) {
-//        this.mobile = mobile;
-//    }
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
 
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "iamage='" + iamage + '\'' +
+                ", contractno=" + contractno +
+                ", lender='" + lender + '\'' +
+                ", borrower='" + borrower + '\'' +
+                ", type=" + type +
+                ", goods='" + goods + '\'' +
+                ", startdate='" + startdate + '\'' +
+                ", duedate='" + duedate + '\'' +
+                ", umageurl='" + umageurl + '\'' +
+                ", audiourl='" + audiourl + '\'' +
+                ", description='" + description + '\'' +
+                ", agreed=" + agreed +
+                ", status=" + status +
+                '}';
+    }
 }
-
-
