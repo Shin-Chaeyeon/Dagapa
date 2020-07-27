@@ -32,8 +32,9 @@ public class LoginActivity extends AppCompatActivity {
     EditText id = null;
     EditText password = null;
     Button btn_login = null;
-    String userno = null;
-    String username = null;
+
+    String userID = null;
+    String userName = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,9 +63,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void makeRequest(final String typed_id, final String typed_pw) {
 //         지환 연수원 ip
-        String url = "http://192.168.100.160:8080/sign_in";
+//        String url = "http://192.168.100.160:8080/sign_in";
 //         채연 연수원 ip
-//        String url = "http://192.168.100.197:8080/sign_in";
+        String url = "http://192.168.100.197:8080/sign_in";
 //         지환 집 ip
 //        String url = "http://192.168.123.106:8080/sign_in";
 
@@ -89,8 +90,9 @@ public class LoginActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
-                        Contract p = new Contract(username, userno);
-                        intent.putExtra("personInfo", p);
+//                        Contract p = new Contract(userID, userName);
+                        intent.putExtra("userID", userID);
+                        intent.putExtra("userName", userName);
                         startActivityForResult(intent, 100);
                     }
                 }, new Response.ErrorListener() {
@@ -122,9 +124,9 @@ public class LoginActivity extends AppCompatActivity {
         Gson gson = new Gson();
 //        User[] temp_array = gson.fromJson(response, User[].class);
         User temp_obj = gson.fromJson(response, User.class);
-        userno = temp_obj.getUserno();
-        username = temp_obj.getNickname();
-        Log.d("test", "@@@@!@@!@!@!@!@!@!유저번호!!! : "+ userno);
+        userID = temp_obj.getId();
+        userName = temp_obj.getName();
+        Log.d("LOGIN", "@@@@@@@@@@@@@@@@@@@@ : "+ userID + " / " + userName);
     }//end processResponse method
 
 }
