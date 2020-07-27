@@ -8,7 +8,7 @@ spring:
   mvc:
     static-path-pattern: /**
   resources:
-    static-locations: file:/Users/CafeAlle/Desktop/test/ # 이것도 저장하고 싶은 위치로 바꾸면 됩니다. <file:> 이건 건들기 ㄴㄴ
+    static-locations: file:/Users/kds/Desktop/test/ # 이것도 저장하고 싶은 위치로 바꾸면 됩니다. <file:> 이건 건들기 ㄴㄴ
     add-mappings: true
 
 # MYBATIS
@@ -25,7 +25,7 @@ server:
 
 # SERVER ADDRESS
 project:
-  url: http://localhost:${server.port} # localhost로 되어있는 부분 해당 ip 바꿔서 넣으면됩니다.
-  file-path: image/contract/ # 이건 해당 C:/Users/CafeAlle/Desktop/test/image/contract/ 로 디렉터리 만들면 됩니다.
-  root-path: C:/Users/CafeAlle/Desktop/test/ # 이건 해당 pc 바탕화면 경로 넣어주면 됩니다.
+  url: http://192.168.100.197:${server.port} # localhost로 되어있는 부분 해당 ip 바꿔서 넣으면됩니다.
+  file-path: image/contract/ # 이건 해당 C:/Users/kds/Desktop/test/image/contract/ 로 디렉터리 만들면 됩니다.
+  root-path: C:/Users/kds/Desktop/test/ # 이건 해당 pc 바탕화면 경로 넣어주면 됩니다.
 
