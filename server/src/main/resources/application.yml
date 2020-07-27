@@ -1,10 +1,15 @@
-# DATABASE
+# DATABASE & STATIC FILE PATH
 spring:
   datasource:
     url: jdbc:mysql://34.64.70.129:3306/kbds?useSSL=false&useUniCode=yes&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&useSSL=false&allowMultiQueries=true
     username: root
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: file:/Users/kds/Desktop/test/ # 이것도 저장하고 싶은 위치로 바꾸면 됩니다. <file:> 이건 건들기 ㄴㄴ
+    add-mappings: true
 
 # MYBATIS
 mybatis:
@@ -13,3 +18,14 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
     jdbc-type-for-null: null
+
+# SERVER PORT
+server:
+  port: 8080
+
+# SERVER ADDRESS
+project:
+  url: http://192.168.100.197:${server.port} # localhost로 되어있는 부분 해당 ip 바꿔서 넣으면됩니다.
+  file-path: image/contract/ # 이건 해당 C:/Users/kds/Desktop/test/image/contract/ 로 디렉터리 만들면 됩니다.
+  root-path: C:/Users/kds/Desktop/test/ # 이건 해당 pc 바탕화면 경로 넣어주면 됩니다.
+

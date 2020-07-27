@@ -1,6 +1,7 @@
 package com.kbds.vo;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -12,6 +13,7 @@ import java.text.SimpleDateFormat;
 @ToString
 @Builder
 public class Contract {
+    private MultipartFile[] image;
     private int contractno;
     private String lender;
     private String borrower;
@@ -19,13 +21,7 @@ public class Contract {
     private String goods;
     private String startdate;
     private String duedate;
-    private String picture;
-    private String record;
+    private String imageurl;
     private String description;
-    private int agreed;
     private int status;
-
-    public void setDueDate(Timestamp timestamp){
-        this.duedate = new SimpleDateFormat("yyyy-MM-dd").format(timestamp);
-    }
 }

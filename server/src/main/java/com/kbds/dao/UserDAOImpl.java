@@ -16,4 +16,9 @@ public class UserDAOImpl implements UserDAO{
     public User findUser(User user) {
         return sqlSession.selectOne(ns + "findUser", user);
     }
+
+    @Override
+    public int updateMyCounts(User user) {
+        return sqlSession.update(ns + "updateMyCounts", user);
+    }
 }
