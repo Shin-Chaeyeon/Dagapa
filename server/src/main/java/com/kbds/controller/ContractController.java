@@ -3,8 +3,6 @@ package com.kbds.controller;
 import com.kbds.service.ContractService;
 import com.kbds.vo.Contract;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -29,6 +25,7 @@ public class ContractController {
     @ApiOperation(value = "나의 모든 계약서 보기", notes = "")
     @GetMapping(value = "/my_contracts/{userno}")
     public List<Contract> findMyContracts(@PathVariable int userno, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+        log.info("CONTROLLER :: my_contracts");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
@@ -74,6 +71,7 @@ public class ContractController {
     @ApiOperation(value = "계약서 추가하기", notes = "")
     @PostMapping("/add_contract")
     public int addContract(@RequestBody Contract contract, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        log.info("CONTROLLER :: add_contract");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         return contractService.addContract(contract);
