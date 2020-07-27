@@ -34,12 +34,6 @@
 
     <update id="acceptContract" parameterType="int">
         UPDATE contract SET status = 2 WHERE contractno = #{contractno};
-        UPDATE user SET lent = lent+1 WHERE id = (
-            SELECT lender FROM contract WHERE contractno = #{contractno}
-        );
-        UPDATE user SET borrowed = borrowed+1 WHERE id = (
-            SELECT borrower FROM contract WHERE contractno = #{contractno}
-        );
     </update>
 
     <delete id="rejectContract" parameterType="int">
@@ -52,11 +46,5 @@
 
     <update id="terminateContract" parameterType="int">
         UPDATE contract SET status = 3 WHERE contractno = #{contractno};
-        UPDATE user SET lent = lent-1 WHERE id = (
-            SELECT lender FROM contract WHERE contractno = #{contractno}
-        );
-        UPDATE user SET borrowed = borrowed-1 WHERE id = (
-            SELECT borrower FROM contract WHERE contractno = #{contractno}
-        );
     </update>
 </mapper>

@@ -13,6 +13,6 @@ public class User {
     private String pw;
     private String name;
     private String phone;
-    private String lent;
-    private String borrowed;
+    private int lent;
+    private int borrowed;
 }

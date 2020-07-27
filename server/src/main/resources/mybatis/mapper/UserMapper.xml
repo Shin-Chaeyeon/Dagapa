@@ -8,4 +8,8 @@
         FROM `user`
         WHERE id = #{id}
     </select>
+
+    <update id="updateMyCounts" parameterType="User">
+        UPDATE `user` SET lent = #{lent}, borrowed = #{borrowed} WHERE id = #{id}
+    </update>
 </mapper>

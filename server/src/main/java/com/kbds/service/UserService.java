@@ -4,4 +4,5 @@ import com.kbds.vo.User;
 
 public interface UserService {
     public User findUser(User user);
+    public int updateMyCounts(User user);
 }

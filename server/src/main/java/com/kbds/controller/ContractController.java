@@ -1,7 +1,9 @@
 package com.kbds.controller;
 
 import com.kbds.service.ContractService;
+import com.kbds.service.UserService;
 import com.kbds.vo.Contract;
+import com.kbds.vo.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ import java.util.List;
 @Slf4j
 public class ContractController {
     private final ContractService contractService;
+    private final UserService userService;
 
     @ApiOperation(value = "나의 모든 계약서 보기", notes = "")
     @GetMapping(value = "/my_contracts/{id}")
@@ -41,6 +44,16 @@ public class ContractController {
             if(Integer.parseInt(duedate) < Integer.parseInt(today))
                 contractService.terminateContract(c.getContractno());
         }
+
+        //user 테이블 내 본인의 lent, borrowed 값 갱신
+        int myLentCount = contractService.findMyLentContracts(id).size();
+        int myBorrowedCount = contractService.findMyBorrowedContracts(id).size();
+        User userToUpdate = new User();
+        userToUpdate.setId(id);
+        userToUpdate.setLent(myLentCount);
+        userToUpdate.setBorrowed(myBorrowedCount);
+        userService.updateMyCounts(userToUpdate);
+
         return contractService.findMyContracts(id);
     }
 

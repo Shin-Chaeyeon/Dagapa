@@ -17,4 +17,9 @@ public class UserServiceImpl implements UserService{
         log.info("[SERVICE] :: findUser()");
         return userDAO.findUser(user);
     }
+
+    @Override
+    public int updateMyCounts(User user) {
+        return userDAO.updateMyCounts(user);
+    }
 }
