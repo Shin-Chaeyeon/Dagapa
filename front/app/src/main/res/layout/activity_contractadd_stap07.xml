@@ -15,7 +15,7 @@
         android:textSize="36dp"
         android:layout_marginBottom="20dp"/>
 
-    <!-- -->
+    <!-- contents -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -68,13 +68,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:id="@+id/startdate_edit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="000"
+                android:text="2020-01-01"
                 android:textSize="20dp" />
 
             <TextView
@@ -87,7 +87,7 @@
                 android:id="@+id/duedate_edit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="000"
+                android:text="2020-01-01"
                 android:textSize="20dp"/>
 
             <TextView
@@ -121,36 +121,59 @@
         <!-- img -->
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="371dp"
+            android:layout_height="270dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="3"
+            android:scaleType="fitXY"
             tools:srcCompat="@tools:sample/avatars" />
 
         <!-- warning -->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="373dp"
             android:layout_height="wrap_content"
-            android:text="사진과 같은 상태를 유지하여야 하며, " />
+            android:layout_marginBottom="20dp"
+            android:text="* 사진과 같은 상태를 유지하여 주세요. " />
 
+        <!-- description -->
         <TextView
             android:id="@+id/textView28"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="특이사항은 다음과 같습니다."
-            android:textSize="20dp"/>
+            android:text="다음 특이사항을 참고해 주세요."
+            android:textSize="20dp"
+            android:layout_marginBottom="5dp"/>
+
+        <!-- description contents -->
         <TextView
             android:id="@+id/description_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="특이사항"
-            android:textSize="20dp"/>
+            android:text="특이사항특이사항특이사항특이사항특이사항"
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginBottom="20dp" />
 
-        <TextView
+        <!-- agree -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="위 계약에 동의하며, 명시된 항목을 위반할 시 법적 효력을 발휘할 수 있습니다." />
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="위 계약에 동의하며, 명시된 항목을 위반할 시 상대는 법적 효력을 발휘할 수 있습니다."
+                android:textSize="20dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -159,23 +182,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/linearLayout">
+        android:layout_marginTop="10dp">
 
         <Button
             android:id="@+id/quit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CANCEL"
+            style="@style/CancelBtn"
+            android:background="@drawable/button_round"
             tools:layout_conversion_absoluteHeight="48dp"
             tools:layout_editor_absoluteY="664dp"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_conversion_absoluteWidth="88dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/complete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SUBMIT"
+            style="@style/SubmitBtn"
+            android:background="@drawable/button_round"
             tools:layout_conversion_absoluteHeight="48dp"
             tools:layout_editor_absoluteY="664dp"
             tools:layout_editor_absoluteX="88dp"
