@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.UnsupportedEncodingException;
 
 @Api(tags = {"***User***"})
 @RequiredArgsConstructor
@@ -22,12 +21,12 @@ public class UserController {
 
     @ApiOperation(value = "로그인", notes = "")
     @PostMapping("/sign_in")
-    public User login(@RequestBody User user, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+    public User login(@RequestBody User user, HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         User search = userService.findUser(user);
         if(user.getPw().equals(search.getPw())) {
-            log.info("[CONTROLLER] :: login()");
+            log.info("[CONTROLLER] :: login");
             log.info("[CONTROLLER] :: "+search.getId()+" "+search.getPw());
             return search;
         }
