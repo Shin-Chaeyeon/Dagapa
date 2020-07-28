@@ -26,9 +26,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:text="나는 "
-            android:textSize="36dp" />
+            android:textSize="36dp"
+            android:layout_marginBottom="10dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -38,9 +38,9 @@
 
             <Button
                 android:id="@+id/lender_button"
-                style="@style/CancelBtn"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
+                style="@style/CancelBtn"
                 android:background="@drawable/button_round"
                 android:text="임대인"
                 android:textSize="30dp" />
@@ -53,9 +53,9 @@
 
             <Button
                 android:id="@+id/borrow_button"
-                style="@style/CancelBtn"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
+                style="@style/CancelBtn"
                 android:background="@drawable/button_round"
                 android:text="임차인"
                 android:textSize="30dp" />
