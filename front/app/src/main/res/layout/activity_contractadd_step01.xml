@@ -1,50 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="계약서를 작성합니다 (1/6)"
+        android:textSize="36dp"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="127dp"
-        android:layout_weight="0"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="421dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="자신의 계약 관계 버튼을 누르세요"
-            android:textSize="38dp" />
+            android:layout_marginBottom="10dp"
+            android:text="나는 "
+            android:textSize="36dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/lender_button"
+                style="@style/CancelBtn"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:background="@drawable/button_round"
+                android:text="임대인"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" / "
+                android:textSize="36dp" />
+
+            <Button
+                android:id="@+id/borrow_button"
+                style="@style/CancelBtn"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:background="@drawable/button_round"
+                android:text="임차인"
+                android:textSize="30dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="입니다."
+            android:textSize="36dp" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="278dp"
-        android:layout_height="160dp"
-        android:layout_weight="0"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/lender_button"
-            android:layout_width="121dp"
-            android:layout_height="125dp"
-            android:layout_alignParentRight="true"
-            android:text="임대인"
-            tools:ignore="MissingConstraints" />
-
-        <Button
-            android:id="@+id/borrow_button"
-            android:layout_width="121dp"
-            android:layout_height="125dp"
-            android:layout_alignParentRight="true"
-            android:text="임차인"
-            tools:ignore="MissingConstraints" />
-
-    </LinearLayout>
-
 
 </LinearLayout>
