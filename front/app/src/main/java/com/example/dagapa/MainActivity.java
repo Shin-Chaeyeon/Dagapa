@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -36,12 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     TextView textView = null;
-    TextView result = null;
     String got_ID = null;
     String got_NAME = null;
 
     RecyclerView recyclerView = null;
     Context context = null;
+
+    FloatingActionButton fab = null;
 
     static RequestQueue requestQueue = null;
 
@@ -51,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textView = findViewById(R.id.tv_info);
-        result = findViewById(R.id.result);
         recyclerView = findViewById(R.id.recyclerView);
+        fab = findViewById(R.id.fab);
 
         context = getApplicationContext();
 
@@ -70,9 +73,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //여기서 AsyncTask 호출하기
-        MyAsyncTask myAsyncTask = new MyAsyncTask(result, recyclerView, got_ID, context);
+        MyAsyncTask myAsyncTask = new MyAsyncTask(recyclerView, got_ID, context);
         myAsyncTask.execute();
+
+        fab.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "토스트 버튼 눌려따리", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), TempActivity.class);
+
+                intent.putExtra("userID", got_ID);
+                intent.putExtra("userName", got_NAME);
+                startActivityForResult(intent, 100);
+            }
+        }));
     }
+
+
+
 
     private void processIntent(Intent intent) {
         if(intent !=null){

@@ -32,8 +32,7 @@ public class MyAsyncTask extends AsyncTask<String, String, String> {
     String userID;
     Context context;
     //화면에 띄워줄 것 있으면 여기서 생성자로 받아올 것.
-    public MyAsyncTask(TextView textView, RecyclerView recyclerView, String userID, Context context){
-        this.result = textView;
+    public MyAsyncTask(RecyclerView recyclerView, String userID, Context context){
         this.recyclerView = recyclerView;
         this.userID = userID;
         this.context= context;
