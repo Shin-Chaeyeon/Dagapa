@@ -1,10 +1,51 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- Custom font style 일괄 적용을 위해 추가-->
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
+        <item name="android:editTextStyle">@style/EditTextStyle</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonStyle</item>
+        <item name="android:checkboxStyle">@style/CheckboxStyle</item>
+    </style>
+
+    <!-- Custom font style 일괄 적용 -->
+    <style name="TextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/nanumsquare_aceb</item>
+    </style>
+
+    <style name="EditTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/nanumsquare_acr</item>
+    </style>
+
+    <style name="RadioButtonStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/nanumsquare_acr</item>
+    </style>
+
+    <style name="CheckboxStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
+        <item name="android:fontFamily">@font/nanumsquare_acr</item>
+    </style>
+
+    <!-- Splash -->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <!-- Button -->
+    <style name="CancelBtn" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <!-- 취소버튼 : 글자 흰색 -->
+        <item name="android:fontFamily">@font/nanumsquare_acb</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="SubmitBtn" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <!-- 확인버튼 : 글자 노란색 -->
+        <item name="android:fontFamily">@font/nanumsquare_acb</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
 </resources>
