@@ -26,8 +26,7 @@ public class UserController {
         response.setCharacterEncoding("UTF-8");
         User search = userService.findUser(user);
         if(user.getPw().equals(search.getPw())) {
-            log.info("[CONTROLLER] :: login");
-            log.info("[CONTROLLER] :: "+search.getId()+" "+search.getPw());
+            log.info("[CONTROLLER] :: login " + search.getId() + " " + search.getPw());
             return search;
         }
         else return null;
