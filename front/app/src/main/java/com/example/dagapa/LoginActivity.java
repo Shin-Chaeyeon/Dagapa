@@ -65,9 +65,9 @@ public class LoginActivity extends AppCompatActivity {
 //         지환 연수원 ip
 //        String url = "http://192.168.100.160:8080/sign_in";
 //         채연 연수원 ip
-        String url = "http://192.168.100.197:8080/sign_in";
+//        String url = "http://192.168.100.197:8080/sign_in";
 //         지환 집 ip
-//        String url = "http://192.168.123.106:8080/sign_in";
+        String url = "http://192.168.123.106:8080/sign_in";
 
 
 
