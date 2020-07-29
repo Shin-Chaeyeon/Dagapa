@@ -31,8 +31,38 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/round_borde_blue"
-            />
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:src="@drawable/lend"
+                android:layout_margin="20dp"
+                >
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle_blue"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                >
+
+                <TextView
+                    android:id="@+id/lend_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+
+                    android:hint="00 건"
+                    android:textSize="30dp"
+                    android:textColor="#0070c0"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_margin="5dp"
@@ -40,8 +70,36 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/round_borde_red"
-            />
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:src="@drawable/borrow"
+                android:layout_margin="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle_red"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                >
+            <TextView
+                android:id="@+id/borrow_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:hint="00 건"
+                android:textSize="30dp"
+                android:textColor="#ff0000"
+                />
+
+            </LinearLayout>
+        </LinearLayout>
 
 
 
@@ -54,7 +112,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_below="@id/top"
-        android:background="@drawable/round_border"
         android:layout_margin="10dp"
         >
 
