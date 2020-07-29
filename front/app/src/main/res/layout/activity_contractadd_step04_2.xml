@@ -41,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="금액을 입력해주세요"
+                android:singleLine="true"
                 android:textSize="36dp"
                 android:layout_marginBottom="10dp"/>
 
