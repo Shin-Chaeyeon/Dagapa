@@ -174,7 +174,6 @@
                 android:layout_height="wrap_content"
                 android:text="위 계약에 동의하며, 명시된 항목을 위반할 시 상대는 법적 효력을 발휘할 수 있습니다."
                 android:textSize="20dp" />
-
         </LinearLayout>
 
     </LinearLayout>

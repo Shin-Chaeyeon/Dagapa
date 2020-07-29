@@ -68,7 +68,7 @@
             android:text="입니다. "
             android:textSize="36dp"
             android:layout_marginBottom="10dp"/>
-
+      
     </LinearLayout>
 
 </LinearLayout>

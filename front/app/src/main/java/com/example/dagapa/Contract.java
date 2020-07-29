@@ -22,11 +22,11 @@ public class Contract implements  Serializable {
         this.duedate = duedate;
     }
 
-    public String getimage() {
+    public String getImage() {
         return image;
     }
 
-    public void setimage(String image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
