@@ -10,9 +10,5 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = "com.kbds")   //하위 폴더를 디폴트로 스캔!!!
 @SpringBootTest
 class DagapaApplicationTests {
-    @Autowired
-    private UserDAO userDAO;
-    @Test
-    void contextLoads() {
-    }
+
 }

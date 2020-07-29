@@ -23,8 +23,8 @@ public class SwaggerConfig {
                 .useDefaultResponseMessages(false); // 기본으로 세팅되는 200,401,403,404 메시지를 표시 하지 않음
     }
     private ApiInfo swaggerInfo() {
-        return new ApiInfoBuilder().title("Spring API Documentation")
-                .description("앱 개발시 사용되는 서버 API 연동 문서입니다")
+        return new ApiInfoBuilder().title("DAGAPA")
+                .description("SPRING BOOT SERVER API Document")
                 .license("acc11311@gmail.com").licenseUrl("https://github.com/Shin-Chaeyeon").version("1").build();
     }
 }
