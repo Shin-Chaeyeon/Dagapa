@@ -29,11 +29,6 @@
         <item name="android:fontFamily">@font/nanumsquare_acr</item>
     </style>
 
-    <!-- Splash -->
-    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash</item>
-    </style>
-
     <!-- Button -->
     <style name="CancelBtn" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
         <!-- 취소버튼 : 글자 흰색 -->
