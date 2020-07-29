@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Contract implements  Serializable {
 
-    String iamage;
+    String image;
     int contractno;
     String lender;
     String borrower;
@@ -22,12 +22,12 @@ public class Contract implements  Serializable {
         this.duedate = duedate;
     }
 
-    public String getIamage() {
-        return iamage;
+    public String getImage() {
+        return image;
     }
 
-    public void setIamage(String iamage) {
-        this.iamage = iamage;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getContractno() {
@@ -113,7 +113,7 @@ public class Contract implements  Serializable {
     @Override
     public String toString() {
         return "Contract{" +
-                "iamage='" + iamage + '\'' +
+                "image='" + image + '\'' +
                 ", contractno=" + contractno +
                 ", lender='" + lender + '\'' +
                 ", borrower='" + borrower + '\'' +

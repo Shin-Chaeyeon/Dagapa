@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="127dp"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="421dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="자신의 계약 관계 버튼을 누르세요"
+            android:textSize="38dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="278dp"
+        android:layout_height="160dp"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/lender_button"
+            android:layout_width="121dp"
+            android:layout_height="125dp"
+            android:layout_alignParentRight="true"
+            android:text="임대인"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/borrow_button"
+            android:layout_width="121dp"
+            android:layout_height="125dp"
+            android:layout_alignParentRight="true"
+            android:text="임차인"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
