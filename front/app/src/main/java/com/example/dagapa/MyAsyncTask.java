@@ -1,6 +1,7 @@
 package com.example.dagapa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -101,6 +102,11 @@ public class MyAsyncTask extends AsyncTask<String, String, String> {
                 String temp = item.toString();
                 Toast.makeText(context, temp , Toast.LENGTH_LONG).show();
 
+                Intent intent = new Intent(context, Contract_info.class);
+                Log.d("kbds!!!", String.valueOf(item));
+                intent.putExtra("contractInfo", item);
+
+                view.getContext().startActivity(intent);
             }
         });
     }
