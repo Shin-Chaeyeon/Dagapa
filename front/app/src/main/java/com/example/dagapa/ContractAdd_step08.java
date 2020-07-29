@@ -16,7 +16,7 @@ public class ContractAdd_step08 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contractadd_step08);
 
-        Button main_button = findViewById(R.id.main_button);
+        Button main_button = findViewById(R.id.button2);
         main_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
