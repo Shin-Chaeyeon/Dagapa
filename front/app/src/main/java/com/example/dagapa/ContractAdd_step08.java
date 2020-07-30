@@ -11,12 +11,14 @@ import static com.example.dagapa.ContractAdd_step01.contract_info_me;
 
 public class ContractAdd_step08 extends AppCompatActivity {
 
+    Button main_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contractadd_step08);
 
-        Button main_button = findViewById(R.id.main_button);
+        main_button = findViewById(R.id.button2);
         main_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
