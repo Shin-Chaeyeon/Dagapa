@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView = null;
     String got_ID = null;
-    String got_NAME = null;
+    static String got_NAME = null;
 
     RecyclerView recyclerView = null;
     Context context = null;
@@ -100,8 +100,10 @@ public class MainActivity extends AppCompatActivity {
     private void processIntent(Intent intent) {
         if(intent !=null){
             got_ID = intent.getExtras().getString("userID");
-            got_NAME = intent.getExtras().getString("userName");
-            Log.d("INTENT", "LOGIN에서 받은 DATA : " + got_ID + " / " + got_NAME);
+            if(got_NAME == null) {
+                got_NAME = intent.getExtras().getString("userName");
+            }
+//            Log.d("INTENT", "LOGIN에서 받은 DATA : " + got_ID + " / " + got_NAME);
         }
     }//end processIntent method
 
