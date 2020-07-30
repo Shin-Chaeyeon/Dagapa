@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView = null;
     String got_ID = null;
+    String got_NAME = null;
 
     RecyclerView recyclerView = null;
     Context context = null;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
          * */
         Intent intent = getIntent();
         processIntent(intent);
-        textView.setText("ID : " + got_ID);
+        textView.setText(got_NAME + " 님 환영합니다!");
 
 
         if (requestQueue == null) {
@@ -99,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
     private void processIntent(Intent intent) {
         if(intent !=null){
             got_ID = intent.getExtras().getString("userID");
-            Log.d("INTENT", "LOGIN에서 받은 DATA : " + got_ID);
+            got_NAME = intent.getExtras().getString("userName");
+            Log.d("INTENT", "LOGIN에서 받은 DATA : " + got_ID + " / " + got_NAME);
         }
     }//end processIntent method
 
