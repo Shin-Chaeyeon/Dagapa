@@ -8,46 +8,46 @@
     android:orientation="vertical"
     >
     <TextView
+        android:layout_marginTop="20dp"
         android:id="@+id/tv_info"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:hint="INFO"/>
 
+    <!--    Middle Layout-->
     <LinearLayout
         android:id="@+id/top"
         android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/main"
-
-        android:layout_margin="25dp"
-        tools:ignore="NotSibling"
-        >
+        android:layout_height="220dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        tools:ignore="NotSibling">
 
         <LinearLayout
-            android:layout_margin="5dp"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_borde_blue"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
-                android:src="@drawable/lend"
                 android:layout_margin="20dp"
-                >
-            </ImageView>
+                android:src="@drawable/lend"></ImageView>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/circle_blue"
-                android:orientation="vertical"
                 android:layout_gravity="center"
-                >
+                android:background="@drawable/circle_blue"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/lend_view"
@@ -57,55 +57,51 @@
                     android:gravity="center"
 
                     android:hint="00 건"
-                    android:textSize="30dp"
-                    android:textColor="#0070c0"/>
+                    android:textColor="#0070c0"
+                    android:textSize="30dp" />
             </LinearLayout>
 
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_margin="5dp"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_borde_red"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
-                android:src="@drawable/borrow"
                 android:layout_margin="20dp"
-                />
+                android:src="@drawable/borrow" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/circle_red"
-                android:orientation="vertical"
                 android:layout_gravity="center"
-                >
-            <TextView
-                android:id="@+id/borrow_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:background="@drawable/circle_red"
+                android:orientation="vertical">
 
-                android:hint="00 건"
-                android:textSize="30dp"
-                android:textColor="#ff0000"
-                />
+                <TextView
+                    android:id="@+id/borrow_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+
+                    android:hint="00 건"
+                    android:textColor="#ff0000"
+                    android:textSize="30dp" />
 
             </LinearLayout>
         </LinearLayout>
 
 
-
     </LinearLayout>
 
-<!--    Middle Layout-->
     <LinearLayout
         android:id="@+id/mid"
         android:layout_width="match_parent"
