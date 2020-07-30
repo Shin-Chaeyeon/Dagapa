@@ -41,6 +41,7 @@
         <activity android:name=".ContractAdd_step06" />
         <activity android:name=".ContractAdd_step07" />
         <activity android:name=".ContractAdd_step08" />
+        <activity android:name=".Contract_info" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.dagapa.fileprovider"
