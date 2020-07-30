@@ -173,7 +173,7 @@
 
         <!-- description -->
         <TextView
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:id="@+id/textView28"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -195,6 +195,7 @@
 
         <!-- agree -->
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -220,15 +221,56 @@
 
 
 
+            <Button
+                android:id="@+id/accept_btn"
+                style="@style/CancelBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_round"
+                android:text="수  락"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_alignParentBottom="true"
+
+
+                />
+
+
+        <Button
+            android:id="@+id/cancel_btn"
+            style="@style/CancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/button_round"
+            android:text="취  소"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/accept_btn" />
+
+        <Button
+            android:id="@+id/end_btn"
+            style="@style/CancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_round"
+            android:text="계약종료"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
         <Button
             android:id="@+id/complete_button"
             style="@style/SubmitBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_round"
-            android:text="SUBMIT"
+            android:text="목록보기"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

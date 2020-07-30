@@ -8,7 +8,10 @@
     android:layout_margin="10dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="계약서를 모두 작성했어요!"
         android:textSize="36dp"
@@ -26,7 +29,8 @@
         android:layout_marginBottom="60dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="상대방의 응답을"
         android:textSize="36dp"
@@ -34,7 +38,8 @@
         android:layout_marginLeft="20dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="기다리고 있어요."
         android:textSize="36dp"

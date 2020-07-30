@@ -8,7 +8,9 @@
     android:layout_margin="10dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="계약서를 작성합니다"
         android:textSize="36dp"
@@ -25,19 +27,22 @@
         android:layout_marginLeft="20dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="계약은"
             android:textSize="36dp"
             android:layout_marginBottom="10dp"/>
 
         <LinearLayout
+            android:layout_marginTop="30dp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="20dp">
 
             <EditText
+                android:singleLine="true"
                 android:id="@+id/date_time_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,6 +61,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:singleLine="true"
                 android:id="@+id/date_time_input2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

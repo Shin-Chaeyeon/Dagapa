@@ -7,7 +7,10 @@
     android:layout_margin="10dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
+
         android:layout_height="wrap_content"
         android:text="계약서를 작성합니다"
         android:textSize="36dp"
@@ -24,13 +27,16 @@
         android:layout_marginLeft="20dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="계약 대상은 "
             android:textSize="36dp"
             android:layout_marginBottom="10dp"/>
 
         <LinearLayout
+            android:layout_marginTop="30dp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -63,7 +69,9 @@
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="입니다. "
             android:textSize="36dp"

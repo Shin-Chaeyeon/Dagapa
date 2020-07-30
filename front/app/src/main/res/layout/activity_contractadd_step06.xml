@@ -8,7 +8,9 @@
     android:layout_margin="10dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="계약서를 작성합니다"
         android:textSize="36dp"
@@ -19,7 +21,8 @@
         android:layout_height="100dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="기타사항이 있다면"
         android:textSize="36dp"
@@ -27,7 +30,8 @@
         android:layout_marginLeft="20dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="메모해 둘 수 있어요."
         android:textSize="36dp"
@@ -35,9 +39,12 @@
         android:layout_marginLeft="20dp" />
 
     <EditText
+        android:layout_marginTop="30dp"
+
         android:id="@+id/description_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:singleLine="true"
         android:hint="비고/특이사항"
         android:textSize="15dp"/>
 
