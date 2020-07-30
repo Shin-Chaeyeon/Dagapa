@@ -27,6 +27,7 @@
 
         <!-- lender, borrower -->
         <LinearLayout
+            android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -35,20 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="임대인 "
-                android:textSize="20dp"/>
-
-            <TextView
-                android:id="@+id/lender_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="000"
-                android:textSize="20dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="은(는) 임차인 "
+                android:text="임차인 "
                 android:textSize="20dp"/>
 
             <TextView
@@ -56,7 +44,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="000"
+                android:textSize="20dp"
+                android:textColor="#0000ff"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="은(는) 임대인 "
                 android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/lender_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="000"
+                android:textSize="20dp"
+                android:textColor="#0000ff"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,6 +71,7 @@
 
         <!-- startdate, duedate -->
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -77,7 +82,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="2020-01-01"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textColor="#0000ff"
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -90,7 +97,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="2020-01-01"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textColor="#0000ff"
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -101,6 +110,8 @@
 
         <!-- (type X) goods -->
         <LinearLayout
+            android:layout_marginTop="10dp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -111,27 +122,48 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="goods"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textColor="#0000ff"
+                />
 
             <TextView
+                android:id="@+id/goods_ment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="을(를) 대여합니다."
                 android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/money_ment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 원을 빌렸습니다."
+                android:textSize="20dp" />
+
         </LinearLayout>
 
         <!-- img -->
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="350dp"
-            android:layout_height="250dp"
+            android:layout_width="365dp"
+            android:layout_height="270dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="3"
             android:scaleType="fitXY"
             tools:srcCompat="@tools:sample/avatars" />
 
+        <ImageView
+            android:id="@+id/money_img"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/money"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+
         <!-- warning -->
         <TextView
+            android:id="@+id/imageInfo"
             android:layout_width="373dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -139,6 +171,7 @@
 
         <!-- description -->
         <TextView
+            android:layout_marginTop="20dp"
             android:id="@+id/textView28"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -154,8 +187,9 @@
             android:layout_weight="1"
             android:text="특이사항특이사항특이사항특이사항특이사항"
             android:textSize="15dp"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginBottom="20dp" />
+            android:textColor="#0000ff"
+            android:layout_marginBottom="20dp"
+            />
 
         <!-- agree -->
         <LinearLayout
