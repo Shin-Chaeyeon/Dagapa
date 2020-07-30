@@ -98,7 +98,7 @@ public class Contract_info extends AppCompatActivity {
         goods.setText(contract.getGoods());
         description_edit.setText(contract.getDescription());
 
-        Log.d("아이템클릭■■■■■■■■", contract.toString());
+        Log.d("아이템클릭■■■■■■@@@■■", contract.toString());
 
         if(type==1){
             // 물품
@@ -132,14 +132,14 @@ public class Contract_info extends AppCompatActivity {
 
             if(userID.equals(contract.creator)){
                 cancel_btn.setVisibility(View.VISIBLE);
-                cancel_btn.setText("취  소");
+                cancel_btn.setText("파  기");
             }
             else{
                 accept_btn.setVisibility(View.VISIBLE);
                 accept_btn.setText("수  락");
 
                 cancel_btn.setVisibility(View.VISIBLE);
-                cancel_btn.setText("거  절");
+                cancel_btn.setText("파  기");
             }
         }
         else if(status == 2){
@@ -147,7 +147,7 @@ public class Contract_info extends AppCompatActivity {
         }
         else if(status == 3){
             cancel_btn.setVisibility(View.VISIBLE);
-            cancel_btn.setText("삭  제");
+            cancel_btn.setText("파  기");
         }
 
         // 수락 버튼
@@ -181,6 +181,8 @@ public class Contract_info extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("userID", userID);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -198,6 +200,8 @@ public class Contract_info extends AppCompatActivity {
                 Log.d("GET 수락", "성공하였따리");
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("userID", userID);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                 Toast.makeText(getApplicationContext(), "계약을 수락하였습니다.", Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
@@ -221,6 +225,8 @@ public class Contract_info extends AppCompatActivity {
                 Log.d("GET 수락/거절/삭제", "성공하였따리");
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("userID", userID);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                 Toast.makeText(getApplicationContext(), "계약을 파기하였습니다.", Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
@@ -244,6 +250,8 @@ public class Contract_info extends AppCompatActivity {
                 Log.d("GET 종료", "성공하였따리");
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("userID", userID);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                 Toast.makeText(getApplicationContext(), "계약을 종료하였습니다.", Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
