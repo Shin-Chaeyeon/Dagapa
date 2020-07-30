@@ -34,10 +34,11 @@ public class ContractServiceImpl implements ContractService, FileService<Contrac
         for(MultipartFile multipartFile : multipartFiles){
             String originFileName = multipartFile.getOriginalFilename();
             if(multipartFile != null){
-                String temp = "";
                 Random random = new Random();
-                temp = random.nextInt() + "";
-                String saveFileName = String.format("%s_%s_%s", temp, contract.getLender(), originFileName);
+                int randomInt = random.nextInt();
+                if(randomInt<0) randomInt = randomInt * -1;
+                String randomString = randomInt + "";
+                String saveFileName = String.format("%s_%s_%s", randomString, contract.getLender(), originFileName);
                 String savePath = String.format("%s/%s%s", base, resourcesPath, saveFileName);
                 multipartFile.transferTo(new File(String.format("%s%s", basePath, resourcesPath), saveFileName));
                 stringBuffer.append(savePath);
