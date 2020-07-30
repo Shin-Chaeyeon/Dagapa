@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "토스트 버튼 눌려따리", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "토스트 버튼 눌려따리", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), ContractAdd_step01.class);
 
                 intent.putExtra("userID", got_ID);
