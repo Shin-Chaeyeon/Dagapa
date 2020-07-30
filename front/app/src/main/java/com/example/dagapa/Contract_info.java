@@ -155,7 +155,7 @@ public class Contract_info extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "수락하였습니다.", Toast.LENGTH_LONG);
-                makeGetRequest(contract.getContractno());
+                acceptRequest(contract.getContractno());
             }
         });
 
@@ -163,7 +163,7 @@ public class Contract_info extends AppCompatActivity {
         cancel_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                deleteRequest(contract.getContractno());
             }
         });
 
@@ -171,7 +171,7 @@ public class Contract_info extends AppCompatActivity {
         end_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                completeRequest(contract.getContractno());
             }
         });
 
@@ -188,7 +188,7 @@ public class Contract_info extends AppCompatActivity {
     }//end onCreate method
 
 
-    public void makeGetRequest(int contract_no){
+    public void acceptRequest(int contract_no){
         String contractno = Integer.toString(contract_no);
         String url = "http://192.168.100.197:8080/accept_contract/"+contractno;
 
@@ -196,8 +196,6 @@ public class Contract_info extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.d("GET 수락", "성공하였따리");
-//                Toast.makeText(getApplicationContext(), "수락 성공", Toast.LENGTH_LONG).show();
-
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("userID", userID);
                 Toast.makeText(getApplicationContext(), "계약을 수락하였습니다.", Toast.LENGTH_LONG).show();
@@ -207,6 +205,52 @@ public class Contract_info extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("GET 수락", "실 패 ");
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }// end makeGetRequest method
+
+    public void deleteRequest(int contract_no){
+        String contractno = Integer.toString(contract_no);
+        String url = "http://192.168.100.197:8080/reject_contract/"+contractno;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("GET 수락/거절/삭제", "성공하였따리");
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("userID", userID);
+                Toast.makeText(getApplicationContext(), "계약을 파기하였습니다.", Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("GET 수락/거절/삭제 수락", "실 패 ");
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }// end makeGetRequest method
+
+    public void completeRequest(int contract_no){
+        String contractno = Integer.toString(contract_no);
+        String url = "http://192.168.100.197:8080/terminate_contract/"+contractno;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("GET 종료", "성공하였따리");
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("userID", userID);
+                Toast.makeText(getApplicationContext(), "계약을 종료하였습니다.", Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("GET 종료", "실 패 ");
             }
         });
 
