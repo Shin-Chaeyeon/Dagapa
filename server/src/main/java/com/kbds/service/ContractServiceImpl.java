@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 @RequiredArgsConstructor
 @Service
@@ -33,7 +34,10 @@ public class ContractServiceImpl implements ContractService, FileService<Contrac
         for(MultipartFile multipartFile : multipartFiles){
             String originFileName = multipartFile.getOriginalFilename();
             if(multipartFile != null){
-                String saveFileName = String.format("%s_%s_%s", contract.getContractno(), contract.getLender(), originFileName);
+                String temp = "";
+                Random random = new Random();
+                temp = random.nextInt() + "";
+                String saveFileName = String.format("%s_%s_%s", temp, contract.getLender(), originFileName);
                 String savePath = String.format("%s/%s%s", base, resourcesPath, saveFileName);
                 multipartFile.transferTo(new File(String.format("%s%s", basePath, resourcesPath), saveFileName));
                 stringBuffer.append(savePath);
