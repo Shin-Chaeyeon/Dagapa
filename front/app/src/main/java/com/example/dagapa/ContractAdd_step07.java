@@ -30,6 +30,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,6 +38,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
+
+import static com.example.dagapa.ContractAdd_step01.contract_info_me;
 
 public class ContractAdd_step07 extends AppCompatActivity {
 
@@ -128,6 +131,12 @@ public class ContractAdd_step07 extends AppCompatActivity {
                             headers.put("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36");
                             HttpPostMultipart multipart = new HttpPostMultipart("http://192.168.100.197:8080/add_contract", "utf-8", headers);
 
+                            if(contract_info_type == 2){
+                                DecimalFormat formatter = new DecimalFormat("###,###");
+                                int money = Integer.parseInt(contract_info_goods);
+                                contract_info_goods = formatter.format(money);
+                            }
+
                             // Add form field string data
                             multipart.addFormField("lender", contract_info_lender);
                             multipart.addFormField("borrower", contract_info_borrower);
@@ -137,6 +146,8 @@ public class ContractAdd_step07 extends AppCompatActivity {
                             multipart.addFormField("duedate", "20" + contract_info_duedate.substring(0,8));
                             multipart.addFormField("description", contract_info_description);
                             multipart.addFormField("status", String.valueOf(1)); // -> int 형이라 안됨.
+                            multipart.addFormField("creator", contract_info_me);
+
 
                             // 파일 보내기
                             if (contract_info_type == 1){ // 물건일 때만 이미지를 보내도록 하자.
