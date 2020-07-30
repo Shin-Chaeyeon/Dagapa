@@ -22,6 +22,8 @@ public class ContractAdd_step08 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("userID", contract_info_me);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });

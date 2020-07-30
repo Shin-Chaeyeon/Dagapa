@@ -20,6 +20,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -55,6 +57,15 @@ public class ContractAdd_step07 extends AppCompatActivity {
     byte[] byteArray;
     Bitmap bitmap;
 
+    ImageView image;
+    ImageView imageMoney;
+    TextView imageInfo;
+
+    TextView goodsment;
+    TextView moneyment;
+
+
+    int type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +83,13 @@ public class ContractAdd_step07 extends AppCompatActivity {
         contract_info_startdate = bundle.getString("contract_info_startdate");
         contract_info_duedate = bundle.getString("contract_info_duedate");
         contract_info_description = bundle.getString("contract_info_description");
+
+
+        if(contract_info_type == 2){
+            DecimalFormat formatter = new DecimalFormat("###,###");
+            int money = Integer.parseInt(contract_info_goods);
+            contract_info_goods = formatter.format(money);
+        }
 
         // 이미지 받아오기
         //-> 마지막은 이미지를 출력해야 하기 때문에 byteArray를 다시 비트맵 형태로 변환하여 출력하자
@@ -92,6 +110,33 @@ public class ContractAdd_step07 extends AppCompatActivity {
         TextView duedate_text = findViewById(R.id.duedate_edit);
         TextView description_text = findViewById(R.id.description_edit);
 
+        image = findViewById(R.id.imageView);
+        imageInfo = findViewById(R.id.imageInfo);
+        imageMoney = findViewById(R.id.money_img);
+
+        goodsment = findViewById(R.id.goods_ment);
+        moneyment = findViewById(R.id.money_ment);
+
+
+        type = contract_info_type;
+
+        if(type==1){
+            // 물품
+            image.setVisibility(View.VISIBLE);
+            imageInfo.setVisibility(View.VISIBLE);
+            goodsment.setVisibility(View.VISIBLE);
+            moneyment.setVisibility(View.GONE);
+            imageMoney.setVisibility(View.GONE);
+        }
+        else{
+            // 금전
+            imageMoney.setVisibility(View.VISIBLE);
+            image.setVisibility(View.GONE);
+            imageInfo.setVisibility(View.GONE);
+            moneyment.setVisibility(View.VISIBLE);
+            goodsment.setVisibility(View.GONE);
+        }
+
         lender_text.setText(contract_info_lender);
         borrower_text.setText(contract_info_borrower);
         goods_text.setText(contract_info_goods);
@@ -104,16 +149,6 @@ public class ContractAdd_step07 extends AppCompatActivity {
 
         // button 누를 때, 밑에 try catch 값이 실행되도록 설정할 것.
 
-        Button quit_button = findViewById(R.id.quit_button);
-        quit_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String start2 = contract_info_startdate;
-                Log.d("test", start2);
-                Log.d("test2", "20" + start2.substring(0,8));
-
-            }
-        });
 
         createNotificationChannel();
         Button complete_button = findViewById(R.id.complete_button);
@@ -131,11 +166,11 @@ public class ContractAdd_step07 extends AppCompatActivity {
                             headers.put("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36");
                             HttpPostMultipart multipart = new HttpPostMultipart("http://192.168.100.197:8080/add_contract", "utf-8", headers);
 
-                            if(contract_info_type == 2){
-                                DecimalFormat formatter = new DecimalFormat("###,###");
-                                int money = Integer.parseInt(contract_info_goods);
-                                contract_info_goods = formatter.format(money);
-                            }
+//                            if(contract_info_type == 2){
+//                                DecimalFormat formatter = new DecimalFormat("###,###");
+//                                int money = Integer.parseInt(contract_info_goods);
+//                                contract_info_goods = formatter.format(money);
+//                            }
 
                             // Add form field string data
                             multipart.addFormField("lender", contract_info_lender);
@@ -146,6 +181,7 @@ public class ContractAdd_step07 extends AppCompatActivity {
                             multipart.addFormField("duedate", "20" + contract_info_duedate.substring(0,8));
                             multipart.addFormField("description", contract_info_description);
                             multipart.addFormField("status", String.valueOf(1)); // -> int 형이라 안됨.
+                            Log.d("크레에이터", contract_info_me);
                             multipart.addFormField("creator", contract_info_me);
 
 
@@ -166,6 +202,10 @@ public class ContractAdd_step07 extends AppCompatActivity {
                 });
                 thread.start();
 
+//                // push 알람 -> 당일(9시간), 하루 전, 3일
+//                for (int i = 1; i<=3; i++){
+//                    push(i);
+//                }
 
                 // 알람 울리는 코드
                 Intent intent = new Intent(ContractAdd_step07.this, ReminderBroadcast.class);
@@ -177,7 +217,7 @@ public class ContractAdd_step07 extends AppCompatActivity {
                 long timeAtButtonClick = System.currentTimeMillis(); // 현재 시간
                 String start = contract_info_startdate;
                 String end = contract_info_duedate;
-                SimpleDateFormat fm = new SimpleDateFormat("yy-MM-dd HH:mm");
+                SimpleDateFormat fm = new SimpleDateFormat("yy-MM-dd");
                 try {
                     Date cal_startdate = fm.parse(start); // 계산 하기 위함.
                     Date cal_enddate = fm.parse(end); // 계산 하기 위함.

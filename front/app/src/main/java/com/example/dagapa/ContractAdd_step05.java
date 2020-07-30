@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -75,23 +76,36 @@ public class ContractAdd_step05 extends AppCompatActivity {
             public void onClick(View view) {
                 contract_info_startdate = date_time_in.getText().toString();
                 contract_info_duedate = date_time2_in.getText().toString();
-
-                if ((contract_info_startdate == null || contract_info_startdate.length() == 0) ||
-                        (contract_info_duedate == null || contract_info_duedate.length() == 0)){
-                    Toast.makeText(getApplicationContext(), "날짜를 모두 기입하세요!", Toast.LENGTH_SHORT).show();
-                } else{
-                    Intent intent = new Intent(getApplicationContext(), ContractAdd_step06.class);
-                    intent.putExtra("contract_info_lender", contract_info_lender);
-                    intent.putExtra("contract_info_borrower", contract_info_borrower);
-                    intent.putExtra("contract_info_type",contract_info_type);
-                    intent.putExtra("contract_info_goods", contract_info_goods);
-                    intent.putExtra("contract_info_startdate", contract_info_startdate);
-                    intent.putExtra("contract_info_duedate", contract_info_duedate);
-                    intent.putExtra("image", byteArray);
-
-                    startActivity(intent);
+                String start = contract_info_startdate;
+                String end = contract_info_duedate;
+                SimpleDateFormat fm = new SimpleDateFormat("yy-MM-dd");
+                try {
+                    if ((contract_info_startdate == null || contract_info_startdate.length() == 0) ||
+                            (contract_info_duedate == null || contract_info_duedate.length() == 0)){
+                        Toast.makeText(getApplicationContext(), "날짜를 모두 기입하세요!", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Date cal_startdate = fm.parse(start); // 계산 하기 위함.
+                        Date cal_enddate = fm.parse(end); // 계산 하기 위함.
+                        if (cal_startdate.getTime() > cal_enddate.getTime()){
+                            Toast.makeText(getApplicationContext(), "종료일은 시작일보다 빠를 수 없습니다!", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Intent intent = new Intent(getApplicationContext(), ContractAdd_step06.class);
+                            intent.putExtra("contract_info_lender", contract_info_lender);
+                            intent.putExtra("contract_info_borrower", contract_info_borrower);
+                            intent.putExtra("contract_info_type",contract_info_type);
+                            intent.putExtra("contract_info_goods", contract_info_goods);
+                            intent.putExtra("contract_info_startdate", contract_info_startdate);
+                            intent.putExtra("contract_info_duedate", contract_info_duedate);
+                            intent.putExtra("image", byteArray);
+                            startActivity(intent);
+                        }
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
-                }
+            }
 
         });
 
@@ -109,23 +123,6 @@ public class ContractAdd_step05 extends AppCompatActivity {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd");
                 start_date = calendar.getTime();
                 date_time_in.setText(simpleDateFormat.format(start_date));
-
-
-//                TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
-//                    @Override
-//                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-//                        calendar.set(Calendar.MINUTE, minute);
-//
-//                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd HH:mm");
-//
-//                        start_date = calendar.getTime();
-//
-//                        date_time_in.setText(simpleDateFormat.format(start_date));
-//                    }
-//                };
-//                new TimePickerDialog(ContractAdd_step05.this, timeSetListener,calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
-//
             }
         };
 
@@ -143,23 +140,6 @@ public class ContractAdd_step05 extends AppCompatActivity {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd");
                 end_date = calendar.getTime();
                 date_time2_in.setText(simpleDateFormat.format(end_date));
-
-
-//                TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
-//                    @Override
-//                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-//                        calendar.set(Calendar.MINUTE, minute);
-//
-//                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd HH:mm");
-//
-//                        end_date = calendar.getTime();
-//
-//                        date_time2_in.setText(simpleDateFormat.format(end_date));
-//                    }
-//                };
-//                new TimePickerDialog(ContractAdd_step05.this, timeSetListener,calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
-//
             }
         };
         new DatePickerDialog(ContractAdd_step05.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
