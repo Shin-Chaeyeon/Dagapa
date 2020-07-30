@@ -108,7 +108,7 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    Log.d("RecyclerView ■■■■■■", "리사이클러뷰 하나 클릭 : " + getAdapterPosition() );
+//                    Log.d("RecyclerView ■■■■■■", "리사이클러뷰 하나 클릭 : " + getAdapterPosition() );
                     int position = getAdapterPosition();
 
                     if(listener != null){
@@ -122,7 +122,6 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
             textView.setText(item.getGoods());
             textView2.setText(item.getDuedate());
 
-            Log.d("로그인된 아이디 + Lender",  userID + " , " + item.getLender());
             int got_state = item.getStatus();
             //1 대기
             //2 진행
@@ -134,7 +133,6 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
                 layout.setBackgroundColor(Color.rgb(179,227,163));
                 // 2# 상태 바 제거
                 state.setVisibility(View.GONE);
-//                state.setImageResource(R.drawable.green);
 
                 // 3# 이미지 처리
                 //이미지 가시화 + 대기화면 이미지 출력
@@ -146,7 +144,6 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
                 ddayView.setVisibility(View.GONE);
                 ddayView_alpha.setVisibility(View.GONE);
                 expire.setVisibility(View.GONE);
-                Log.d("CHANGE", "변화가생겨따리" + item.getStatus() + " / " + got_state);
             }
 
             // 상태 : 진행(2) , Blue-임대 or RED-임차
@@ -168,18 +165,15 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
                 // 2
                 // d-day counter
                 String dueDate = item.getDuedate();
-                Log.d("마감일 : " , dueDate);
 
                 long result = 0;
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 try {
                     Date now = sdf.parse(sdf.format(new Date()));
-                    Log.d("오늘 : " , String.valueOf(now));
                     Date end = sdf.parse(dueDate);
 
                     long gap = now.getTime() - end.getTime();
                     result = (long) (Math.floor(gap/ (1000*60*60*24))*-1);
-                    Log.d("남은 날짜 : ", String.valueOf(result));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -224,14 +218,11 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
 
                     expire.setVisibility(View.VISIBLE);
                 }
-
-                ///////////////////////////
             }
             // 상태 : 종료(3) , GRAY
             else if(got_state == 3){
                 layout.setBackgroundColor(Color.rgb(199, 199, 199));
                 endImg.setVisibility(View.VISIBLE);
-//                state.setImageResource(R.drawable.gray);
 
                 waitImg.setVisibility(View.GONE);
                 state.setVisibility(View.GONE);
@@ -242,9 +233,6 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
                 expire.setVisibility(View.GONE);
             }
 
-
-
-
             // 금전 또는 물건 image display area
             int got_type = item.getType();
             if(got_type==1){
@@ -252,52 +240,6 @@ public class ContractAdapter extends RecyclerView.Adapter<ContractAdapter.ViewHo
             } else{
                 objects.setImageResource(R.drawable.money);
             }
-
-
-//            // d-day counter
-//            String dueDate = item.getDuedate();
-//            Log.d("마감일 : " , dueDate);
-//
-//            long result = 0;
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//            try {
-//                Date now = sdf.parse(sdf.format(new Date()));
-//                Log.d("오늘 : " , String.valueOf(now));
-//                Date end = sdf.parse(dueDate);
-//
-//                long gap = now.getTime() - end.getTime();
-//                result = (long) (Math.floor(gap/ (1000*60*60*24))*-1);
-//                Log.d("남은 날짜 : ", String.valueOf(result));
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-
-//            // got_state
-//            // 1 : 대기 , 2 : 진행, 3 : 종료
-//            if(got_state != 1) {
-//                // 남은 기간이 1일 이상
-//                if (result >= 1) {
-//                    ddayView.setText(Long.toString(result));
-//                }
-//                // 남은 기간이 0일. (D-Day)
-//                else if (result == 0) {
-//                    dday_img.setVisibility(View.VISIBLE);
-//                    dday_img.setImageResource(R.drawable.dday);
-//                    ddayView.setVisibility(View.GONE);
-//                    ddayView_alpha.setVisibility(View.GONE);
-//                }
-//                // 남은 기간이 음수.
-//                else {
-//                    layout.setBackgroundColor(Color.rgb(199, 199, 199));
-//                    state.setVisibility(View.INVISIBLE);
-//
-//                    dday_img.setVisibility(View.VISIBLE);
-//                    dday_img.setImageResource(R.drawable.end);
-//                    ddayView.setVisibility(View.GONE);
-//                    ddayView_alpha.setVisibility(View.GONE);
-//                }
-//            }
-
 
         }//end setItem method
 
