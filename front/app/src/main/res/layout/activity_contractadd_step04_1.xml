@@ -6,32 +6,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="10dp">
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="계약서를 작성합니다"
         android:textSize="36dp"
         android:layout_marginBottom="20dp"/>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp" />
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="60dp"
         android:layout_marginLeft="20dp">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="물품은"
             android:textSize="36dp"
             android:layout_marginBottom="10dp"/>
-
         <EditText
             android:id="@+id/goods_edit"
             android:layout_width="wrap_content"
@@ -41,15 +36,12 @@
             android:hint="물품명을 입력해주세요"
             android:textSize="36dp"
             android:layout_marginBottom="10dp"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="이에요."
             android:textSize="36dp" />
-
     </LinearLayout>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +49,6 @@
         android:textSize="36dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"/>
-
     <Button
         android:id="@+id/camera_button"
         android:layout_width="match_parent"
@@ -67,17 +58,22 @@
         android:background="@drawable/button_round"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
-
-    <ImageView
-        android:id="@+id/imageview"
-        android:layout_width="332dp"
-        android:layout_height="163dp"
-        android:layout_marginBottom="20dp" />
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="212dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="334dp"
+            android:layout_height="175dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="20dp"
+            android:scaleType="fitCenter" />
+    </RelativeLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <Button
             android:id="@+id/next_04_1"
             style="@style/SubmitBtn"
@@ -89,5 +85,4 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </LinearLayout>
