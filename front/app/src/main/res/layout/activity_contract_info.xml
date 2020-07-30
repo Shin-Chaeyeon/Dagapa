@@ -9,8 +9,10 @@
 
     <!-- title -->
     <TextView
+        android:layout_marginTop="20dp"
         android:id="@+id/textView15"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="계약서를 확인해주세요"
         android:textSize="36dp"
@@ -171,7 +173,7 @@
 
         <!-- description -->
         <TextView
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:id="@+id/textView28"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -193,6 +195,7 @@
 
         <!-- agree -->
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
