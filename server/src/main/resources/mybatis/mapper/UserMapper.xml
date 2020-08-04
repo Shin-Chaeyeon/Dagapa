@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+    <select id="findUser" parameterType="User" resultType="User">
+        SELECT id, pw, `name`, phone, lent, borrowed
+        FROM `user`
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateMyCounts" parameterType="User">
+        UPDATE `user` SET lent = #{lent}, borrowed = #{borrowed} WHERE id = #{id}
+    </update>
+</mapper>

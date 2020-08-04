@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ContractMapper">
+    <select id="findMyContracts" parameterType="String" resultType="Contract">
+        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status, creator
+        FROM contract c, `user` u
+        WHERE u.id = #{id} AND (c.lender = u.id OR c.borrower = u.id)
+    </select>
+
+    <select id="findMyLentContracts" parameterType="String" resultType="Contract">
+        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status, creator
+        FROM contract c, `user` u
+        WHERE u.id = #{id} AND c.lender = u.id AND status = 2
+    </select>
+
+    <select id="findMyBorrowedContracts" parameterType="String" resultType="Contract">
+        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status, creator
+        FROM contract c, `user` u
+        WHERE u.id = #{id} AND c.borrower = u.id AND status = 2
+    </select>
+
+    <select id="findContractByNo" parameterType="int" resultType="Contract">
+        SELECT contractno, lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status, creator
+        FROM contract
+        WHERE contractno = #{contractno}
+    </select>
+
+    <insert id="addContract" parameterType="Contract">
+        INSERT INTO contract (lender, borrower, `type`, goods, startdate, duedate, imageurl, description, status, creator)
+        VALUES (#{lender}, #{borrower}, #{type}, #{goods}, #{startdate}, #{duedate}, #{imageurl}, #{description}, #{status}, #{creator})
+    </insert>
+
+    <update id="acceptContract" parameterType="int">
+        UPDATE contract SET status = 2 WHERE contractno = #{contractno};
+    </update>
+
+    <delete id="rejectContract" parameterType="int">
+        DELETE FROM contract WHERE contractno = #{contractno};
+    </delete>
+
+    <select id="findDuedate" parameterType="int" resultType="String">
+        SELECT duedate FROM contract WHERE contractno = #{contractno}
+    </select>
+
+    <update id="terminateContract" parameterType="int">
+        UPDATE contract SET status = 3 WHERE contractno = #{contractno};
+    </update>
+</mapper>
